@@ -575,3 +575,13 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 .workout-status.completed{color:#86efac;background:rgba(134,239,172,.10);border:1px solid rgba(134,239,172,.18)}
 .workout.is-progress{border-color:rgba(124,255,107,.55)!important;box-shadow:0 0 0 1px rgba(124,255,107,.08) inset}
 .continue-workout{width:100%;margin-top:14px;padding:13px 16px;border:1px solid rgba(124,255,107,.35);border-radius:12px;background:rgba(124,255,107,.08);color:#86efac;font-weight:900;cursor:pointer}
+
+/* v35 — missed workouts + finish active workout from Plan */
+.workout-status.missed{color:#fecaca;background:rgba(239,68,68,.13);border:1px solid rgba(248,113,113,.32)}
+.workout.is-missed{border-color:rgba(239,68,68,.62)!important;background:linear-gradient(180deg,rgba(127,29,29,.13),rgba(10,14,12,.96))!important;box-shadow:0 0 0 1px rgba(239,68,68,.08) inset}
+.workout.is-missed .date{color:#fca5a5}
+.missed-note{margin-top:13px;padding:10px 12px;border-radius:10px;background:rgba(239,68,68,.08);color:#fca5a5;font-size:.8rem;font-weight:800}
+.plan-session-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.plan-session-actions .continue-workout{margin:0}
+.finish-from-plan{padding:13px 12px;border:1px solid rgba(134,239,172,.28);border-radius:12px;background:#86efac;color:#071008;font-weight:950;cursor:pointer}
+@media(max-width:520px){.plan-session-actions{grid-template-columns:1fr}.finish-from-plan,.plan-session-actions .continue-workout{min-height:48px}}
