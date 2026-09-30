@@ -463,3 +463,83 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
   .work-target{padding:16px}
   .session-actions .secondary{min-height:44px}
 }
+
+/* v31 — workout UI visibility on phones */
+@media(max-width:700px){
+  #todayView{padding-bottom:92px!important}
+  #todayWorkout{display:block!important;visibility:visible!important;opacity:1!important}
+  #todayWorkout .session{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+    margin:10px 0 18px!important;
+    padding:16px 13px!important;
+    background:#0b120e!important;
+    border:1px solid rgba(124,255,107,.22)!important;
+  }
+  #todayWorkout .active-step{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+    position:relative!important;
+    z-index:2!important;
+  }
+  #todayWorkout .exercise-label{
+    display:block!important;
+    color:#86efac!important;
+    font-size:.68rem!important;
+  }
+  #todayWorkout .active-step h2{
+    display:block!important;
+    color:#fff!important;
+    font-size:1.75rem!important;
+    line-height:1.05!important;
+    margin:8px 0 14px!important;
+  }
+  #todayWorkout .set-counter{
+    display:flex!important;
+    width:100%!important;
+    justify-content:center!important;
+    color:#d5ddd8!important;
+    background:#111b15!important;
+    border-color:rgba(124,255,107,.22)!important;
+    font-size:1rem!important;
+    padding:11px 10px!important;
+  }
+  #todayWorkout .set-counter strong{color:#7cff6b!important;font-size:1.12rem!important}
+  #todayWorkout .work-target{
+    display:block!important;
+    visibility:visible!important;
+    margin:12px 0 14px!important;
+    padding:16px 12px!important;
+    text-align:center!important;
+    background:#050906!important;
+    border:1px solid rgba(255,255,255,.10)!important;
+  }
+  #todayWorkout .work-target span{
+    display:block!important;
+    color:#aeb8b1!important;
+    font-size:.72rem!important;
+  }
+  #todayWorkout .work-target strong{
+    display:block!important;
+    color:#fff!important;
+    font-size:2.8rem!important;
+    line-height:1!important;
+  }
+  #todayWorkout .check-btn{
+    display:block!important;
+    visibility:visible!important;
+    width:100%!important;
+    min-height:62px!important;
+    position:relative!important;
+    z-index:3!important;
+  }
+  #todayWorkout .session-actions{display:flex!important;visibility:visible!important}
+  #todayWorkout .next-simple{display:block!important;color:#9ca9a1!important}
+}
