@@ -183,3 +183,43 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 /* v24: compact header; overall progress lives only inside Plan */
 .hero{min-height:0!important;padding-top:8px!important;padding-bottom:8px!important;display:flex!important;justify-content:flex-end!important}
 #planView>.progress-card{margin:0 0 16px!important}
+
+/* v26: app branding header */
+.hero.app-brand-header{
+  min-height:0!important;
+  padding:10px 0 8px!important;
+  display:block!important;
+}
+.brand-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:100%;
+}
+.brand-logo{
+  width:48px;
+  height:48px;
+  display:block;
+  flex:0 0 48px;
+  object-fit:cover;
+  border-radius:12px;
+}
+.brand-title{
+  margin-left:auto;
+  text-align:right;
+  font-size:1.15rem;
+  line-height:1.1;
+  font-weight:900;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+.hero.app-brand-header #resetBtn{
+  margin-top:8px;
+  margin-left:auto;
+  display:block;
+}
+@media(max-width:700px){
+  .brand-logo{width:42px;height:42px;flex-basis:42px;border-radius:10px}
+  .brand-title{font-size:1rem}
+}

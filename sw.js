@@ -1,4 +1,4 @@
-const CACHE='workout-v25';
+const CACHE='workout-v26';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png','./kachigor-start.jpg','./achievement-measure.jpg','./achievement-steady.jpg','./achievement-squats.jpg','./achievement-pushups.jpg','./achievement-week1.jpg','./achievement-week2.jpg','./achievement-week3.jpg','./achievement-week4.jpg'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
