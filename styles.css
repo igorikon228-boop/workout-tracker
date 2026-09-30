@@ -598,3 +598,7 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 .reading-fold.is-read .reading-summary small,.reading-fold.is-read .reading-chevron{color:#89938d!important}
 .reading-fold.is-read .reading-summary strong,.reading-fold.is-read .reading-num{color:#a1aaa4!important}
 .reading-fold.is-read .reading-body{color:#929b95}
+
+/* v38 — article becomes read only when another article opens */
+.reading-fold[open]:not(.is-read){opacity:1}
+.reading-fold[open]:not(.is-read) .reading-summary strong{color:#f4f7f4}
