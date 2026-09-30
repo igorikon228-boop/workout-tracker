@@ -585,3 +585,9 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 .plan-session-actions .continue-workout{margin:0}
 .finish-from-plan{padding:13px 12px;border:1px solid rgba(134,239,172,.28);border-radius:12px;background:#86efac;color:#071008;font-weight:950;cursor:pointer}
 @media(max-width:520px){.plan-session-actions{grid-template-columns:1fr}.finish-from-plan,.plan-session-actions .continue-workout{min-height:48px}}
+
+/* v36 — plan completion guard */
+.workout-status.future{color:#aeb8b1;background:rgba(148,163,184,.08);border:1px solid rgba(148,163,184,.18)}
+.workout.is-future{opacity:.82}
+.future-note{margin-top:13px;padding:10px 12px;border-radius:10px;background:rgba(148,163,184,.06);color:#89958e;font-size:.78rem;font-weight:700}
+.workout-complete-label{margin-top:14px;padding:13px;text-align:center;border-radius:12px;background:rgba(134,239,172,.08);border:1px solid rgba(134,239,172,.16);color:#86efac;font-weight:900}
