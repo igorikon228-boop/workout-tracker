@@ -602,3 +602,16 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 /* v38 — article becomes read only when another article opens */
 .reading-fold[open]:not(.is-read){opacity:1}
 .reading-fold[open]:not(.is-read) .reading-summary strong{color:#f4f7f4}
+
+/* v39 — fully mute read article content */
+.reading-fold.is-read .reading-body,
+.reading-fold.is-read .reading-body p,
+.reading-fold.is-read .reading-body b,
+.reading-fold.is-read .reading-tip,
+.reading-fold.is-read .reading-tip b{
+  color:#89938d!important;
+}
+.reading-fold.is-read .reading-tip{
+  background:rgba(148,163,184,.06)!important;
+  border-color:rgba(148,163,184,.12)!important;
+}
