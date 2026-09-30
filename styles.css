@@ -543,3 +543,7 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
   #todayWorkout .session-actions{display:flex!important;visibility:visible!important}
   #todayWorkout .next-simple{display:block!important;color:#9ca9a1!important}
 }
+
+/* v32 — resumable workout */
+.paused-session .active-step{padding-top:10px}
+.resume-note{margin-top:12px;text-align:center;color:#86efac;font-size:.82rem;font-weight:800}
