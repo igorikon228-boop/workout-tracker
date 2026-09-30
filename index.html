@@ -13,15 +13,11 @@
   </div>
 </section><main class="app">
 <header class="hero"><div><p class="eyebrow">Персональные 4 недели</p><h1>4 недели силы</h1><p class="subtitle">Персональный план на 4 недели. Стартовая нагрузка рассчитывается по твоим текущим показателям.</p></div><button id="resetBtn" class="ghost">Сбросить прогресс</button></header>
-<nav class="main-nav"><button class="main-tab active" data-view="today">Сегодня</button><button class="main-tab" data-view="plan">План на 4 недели</button><button class="main-tab" data-view="profile">Профиль</button><button class="main-tab" data-view="achievements">★ Достижения</button></nav>
+<nav class="main-nav"><button class="main-tab active" data-view="today">Сегодня</button><button class="main-tab" data-view="plan">План</button><button class="main-tab" data-view="reading">Чтиво</button><button class="main-tab" data-view="profile">Профиль</button></nav>
 <section class="progress-card"><div class="progress-head"><span>Общий прогресс</span><strong id="progressText">0 / 28</strong></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div><p id="progressPercent"></p></section>
 <section id="todayView" class="view"><div id="todayStatus" class="today-status"></div><div id="todayWorkout"></div></section>
 <section id="planView" class="view hidden"><section id="weekSummary" class="week-summary"></section><section id="workouts" class="workouts"></section></section>
-<section id="readingView" class="view hidden"></section><section id="profileView" class="view hidden"></section>
-<section id="achievementsView" class="view achievements-view hidden" aria-label="Достижения">
-  <div class="section-head"><h2>Достижения</h2><p>Твои награды за реальные результаты тренировок.</p></div>
-  <div id="achievementsGrid" class="achievements-grid"></div>
-</section></main><div id="tipModal" class="tip-modal hidden"></div><script src="app.js"></script><script>
+<section id="readingView" class="view hidden"></section><section id="profileView" class="view hidden"></section></main><div id="tipModal" class="tip-modal hidden"></div><script src="app.js"></script><script>
 if ('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
 </script>
 </body></html>
