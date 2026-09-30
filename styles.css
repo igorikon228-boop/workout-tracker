@@ -179,3 +179,7 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
 @media(max-width:700px){
   .main-nav,.tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 }
+
+/* v24: compact header; overall progress lives only inside Plan */
+.hero{min-height:0!important;padding-top:8px!important;padding-bottom:8px!important;display:flex!important;justify-content:flex-end!important}
+#planView>.progress-card{margin:0 0 16px!important}
