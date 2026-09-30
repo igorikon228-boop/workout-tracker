@@ -1,0 +1,27 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><title>4 недели силы</title><link rel="stylesheet" href="styles.css"><link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b1110">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="4 недели силы">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head><body><section id="welcomeV12" class="welcome-v12 hidden">
+  <div class="welcome-poster-v13">
+    <img src="kachigor-start.jpg" alt="КАЧИГОРЬ — 4 недели силы">
+    <div class="welcome-action-v13">
+      <button id="welcomeStart" class="primary welcome-start-v13">Сделать замеры →</button>
+    </div>
+  </div>
+</section><main class="app">
+<header class="hero"><div><p class="eyebrow">Персональные 4 недели</p><h1>4 недели силы</h1><p class="subtitle">Персональный план на 4 недели. Стартовая нагрузка рассчитывается по твоим текущим показателям.</p></div><button id="resetBtn" class="ghost">Сбросить прогресс</button></header>
+<nav class="main-nav"><button class="main-tab active" data-view="today">Сегодня</button><button class="main-tab" data-view="plan">План на 4 недели</button><button class="main-tab" data-view="goals">Цель</button><button type="button" data-v17-achievements="1" class="v17-ach-tab"><span>★</span><small>Достижения</small></button></nav>
+<section class="progress-card"><div class="progress-head"><span>Общий прогресс</span><strong id="progressText">0 / 28</strong></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div><p id="progressPercent"></p></section>
+<section id="todayView" class="view"><div id="todayStatus" class="today-status"></div><div id="todayWorkout"></div></section>
+<section id="planView" class="view hidden"><nav id="weekTabs" class="tabs"></nav><section id="weekSummary" class="week-summary"></section><section id="workouts" class="workouts"></section></section>
+<section id="goalsView" class="view hidden"></section>
+<section id="achievementsView" class="view achievements-view hidden" aria-label="Достижения">
+  <div class="section-head"><h2>Достижения</h2><p>Твои награды за реальные результаты тренировок.</p></div>
+  <div id="achievementsGrid" class="achievements-grid"></div>
+</section></main><div id="tipModal" class="tip-modal hidden"></div><script src="app.js"></script><script>
+if ('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+</script>
+</body></html>
