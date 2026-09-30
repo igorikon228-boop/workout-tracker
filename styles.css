@@ -37,12 +37,6 @@
 :root{--g:#7cff6b;--lime:#b6ff63;--bg:#050806;--panel:#0b110e;--line:rgba(151,255,126,.15)}
 html,body{background:#050806!important;color:#f5f7f5}
 body{background:radial-gradient(circle at 90% 12%,rgba(82,255,103,.08),transparent 26rem),#050806!important}
-.strength-hero{position:relative;width:min(1180px,calc(100% - 28px));height:clamp(245px,35vw,430px);margin:14px auto 18px;border-radius:30px;overflow:hidden;background:#07100a url("hero-strength.jpg") center 31%/cover no-repeat;border:1px solid rgba(133,255,105,.18);box-shadow:0 30px 90px rgba(0,0,0,.52)}
-.strength-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 35%,rgba(3,7,4,.78) 100%)}
-.strength-hero__shade{position:absolute;inset:auto 0 0;height:40%;z-index:1;background:linear-gradient(transparent,rgba(2,5,3,.7))}
-.strength-hero__copy{position:absolute;z-index:2;right:5%;top:50%;transform:translateY(-50%);filter:drop-shadow(0 5px 18px #000)}
-.strength-hero__eyebrow{display:block;color:#c4d0c8;font-size:.68rem;font-weight:900;letter-spacing:.18em;margin-bottom:8px}
-.strength-hero__brand{display:flex;align-items:center;gap:9px;font-style:italic;font-weight:950;line-height:.82;letter-spacing:-.06em}.strength-hero__brand>b{font-size:clamp(4.6rem,9vw,8.4rem);color:var(--g);text-shadow:0 0 32px rgba(124,255,107,.25)}.strength-hero__brand>span{font-size:clamp(1.7rem,3.7vw,3.8rem)}.strength-hero__brand strong{color:var(--g);font-size:1.22em}
 .main-nav,.tabs{background:rgba(8,14,10,.88)!important;border:1px solid var(--line)!important;border-radius:20px!important;padding:7px!important;backdrop-filter:blur(18px);box-shadow:0 16px 45px rgba(0,0,0,.3)}
 .main-nav button,.tabs button{border-radius:14px!important;min-height:46px!important;font-weight:850!important}.main-nav button.active,.tabs button.active,.main-tab.active{background:linear-gradient(135deg,rgba(124,255,107,.22),rgba(124,255,107,.07))!important;color:var(--g)!important;box-shadow:inset 0 0 0 1px rgba(124,255,107,.25)}
 .workout-card,.day-card,.card,.goal-card,.session-card{background:linear-gradient(145deg,rgba(15,25,19,.97),rgba(7,12,9,.98))!important;border:1px solid rgba(150,255,125,.12)!important;border-radius:22px!important;box-shadow:0 20px 60px rgba(0,0,0,.34)}
@@ -50,12 +44,10 @@ body{background:radial-gradient(circle at 90% 12%,rgba(82,255,103,.08),transpare
 button.primary,.primary,.start-btn,.check-btn{background:linear-gradient(135deg,var(--g),var(--lime))!important;color:#071008!important;border:0!important;box-shadow:0 10px 30px rgba(124,255,107,.15)!important;font-weight:900}
 input,textarea,select{background:#090f0b!important;border:1px solid rgba(151,255,126,.14)!important;color:#f3f7f4!important;border-radius:14px!important}
 .progress-bar>*,.completion-progress i{background:linear-gradient(90deg,#45e96b,var(--lime))!important;box-shadow:0 0 16px rgba(124,255,107,.25)}
-@media(max-width:700px){body{padding-bottom:92px}.strength-hero{width:calc(100% - 18px);height:245px;margin:9px auto 12px;border-radius:24px;background-position:39% 30%}.strength-hero:after{background:linear-gradient(0deg,rgba(2,5,3,.88),transparent 72%)}.strength-hero__copy{left:18px;right:auto;top:auto;bottom:18px;transform:none}.strength-hero__eyebrow{font-size:.55rem;margin-bottom:4px}.strength-hero__brand>b{font-size:4.2rem}.strength-hero__brand>span{font-size:1.65rem}.main-nav,.tabs{position:fixed!important;z-index:900;left:10px;right:10px;bottom:10px;margin:0!important;border-radius:22px!important;box-shadow:0 20px 70px #000!important}.main-nav button,.tabs button{font-size:.78rem!important;min-width:0!important;padding:9px 7px!important}}
 
 /* v12 gritty mobile fitness UI */
 body{background:#050907!important;background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),radial-gradient(circle at 20% 0,rgba(124,255,107,.045),transparent 26rem)!important;background-size:100% 4px,auto!important}
 .v12-brand{max-width:1120px;margin:10px auto 0;padding:8px 18px;background:transparent!important;border:0!important}.v12-logo{display:flex;align-items:center;gap:6px;font-style:italic;font-weight:950;line-height:.82}.v12-logo b{font-size:3.2rem;color:#75ff67}.v12-logo span{font-size:1.18rem}.v12-logo strong{color:#75ff67}
-.strength-hero{display:none!important}
 .welcome-v12{position:fixed;z-index:1200;inset:0;background:#050806;display:grid;grid-template-columns:minmax(280px,520px) minmax(320px,520px);align-items:center;justify-content:center;gap:0;padding:24px;overflow:auto}.welcome-v12.hidden{display:none}.welcome-photo{height:min(82vh,780px);border-radius:30px 0 0 30px;overflow:hidden;border:1px solid rgba(124,255,107,.22);border-right:0}.welcome-photo img{width:100%;height:100%;object-fit:cover}.welcome-copy{min-height:min(82vh,780px);display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5vw,60px);border:1px solid rgba(124,255,107,.22);border-radius:0 30px 30px 0;background:linear-gradient(145deg,#0c1510,#060a07)}.welcome-copy .handline{font-size:clamp(1.8rem,4vw,3.2rem);font-weight:900;transform:rotate(-2deg);margin:0 0 15px}.welcome-copy h1{font-size:clamp(2rem,4vw,3.6rem);margin:0 0 18px}.welcome-copy em{font-style:normal;color:#79ff69;background:rgba(121,255,105,.1);padding:0 .15em}.welcome-copy p{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:#d7ded9}.welcome-copy strong{color:#79ff69}.welcome-copy button{margin-top:18px;min-height:58px;font-size:1.05rem}
 .workout-card,.day-card,.card,.goal-card,.session-card{border-radius:16px!important;background:linear-gradient(145deg,#101916,#09100d)!important;border-color:rgba(167,255,149,.12)!important}
 .main-nav,.tabs{border-radius:16px!important}.main-nav button,.tabs button{border-radius:11px!important}
@@ -154,4 +146,12 @@ h1,h2,h3{font-weight:900!important}.session-card .timer,.timer-display{font-vari
  .achievement-art{aspect-ratio:auto;height:100%}.achievement-copy{padding:12px}
  .achievement-copy h3{font-size:1.05rem}.achievement-copy p{font-size:.8rem;margin-bottom:9px}
  .main-nav,.tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+
+/* v18 stability/navigation */
+#weekTabs{display:none!important}
+@media(max-width:700px){
+ .main-nav{position:fixed!important;left:8px!important;right:8px!important;bottom:max(8px,env(safe-area-inset-bottom))!important;z-index:1100!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;padding:6px!important}
+ .main-nav button{min-width:0!important;min-height:50px!important;padding:6px 4px!important;font-size:.68rem!important;white-space:normal!important}
+ .tabs{position:static!important}
 }
