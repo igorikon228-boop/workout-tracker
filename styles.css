@@ -825,3 +825,21 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .workout-music{background:linear-gradient(145deg,rgb(var(--surface-rgb)),rgb(var(--surface-deep-rgb)))!important;border-color:rgba(var(--accent-rgb),.26)!important}.music-art span{background:var(--green)!important;color:var(--active-text)!important}.music-topline span,.music-skip{color:var(--green)!important}.music-toggle{background:rgba(var(--accent-rgb),.09)!important;border-color:rgba(var(--accent-rgb),.52)!important}.music-icon-pause{border-left-color:var(--green)!important;border-right-color:var(--green)!important}.music-icon-play{border-left-color:var(--green)!important}.skip-arrow{display:block;font-size:23px;line-height:1;font-weight:500;color:currentColor}
 .next-hint,.up-next{border-color:rgba(var(--accent-rgb),.24)!important;background:rgba(var(--accent-rgb),.055)!important}.up-next span{color:var(--green)!important}.ring-bg{stroke:rgba(var(--accent-rgb),.13)!important}.ring-fg,.prepare .ring-fg,.exercise .ring-fg{stroke:var(--green)!important}
 .completion-card{border-color:rgba(var(--accent-rgb),.32)!important;background:radial-gradient(circle at 50% 0%,rgba(var(--accent-rgb),.12),transparent 36%),rgb(var(--surface-rgb))!important}.completion-mark{background:linear-gradient(135deg,var(--green),var(--accent-2))!important;color:var(--active-text)!important}.completion-card .eyebrow{color:var(--green)!important}
+
+/* v70 — stable desktop grids */
+@media(min-width:901px){
+ #planView,#readingView,#profileView{width:min(100%,1080px);max-width:1080px;margin-left:auto;margin-right:auto}
+ #planView .workouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;align-items:start;gap:12px}
+ #planView .workout{width:100%;min-width:0;height:auto;align-self:start}
+ #planView .workout-top{min-width:0}
+ #planView .exercise-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #planView .exercise{min-width:0}
+ .reading-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;align-items:start;gap:10px}
+ .reading-fold{width:100%;min-width:0;align-self:start}
+ .reading-fold[open]{grid-column:auto}
+ .reading-summary{min-width:0}
+ .reading-summary strong{overflow-wrap:anywhere}
+}
+@media(min-width:901px) and (max-width:1100px){
+ #planView,#readingView,#profileView{width:calc(100% - 32px)}
+}
