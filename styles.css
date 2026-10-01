@@ -840,3 +840,10 @@ body{color:var(--text)}
 .profile-ring{background:conic-gradient(var(--green) calc(var(--profile-pct)*1%),rgba(var(--accent-rgb),.10) 0);box-shadow:0 0 28px rgba(var(--accent-rgb),.055)}
 @media(max-width:700px){.theme-options{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:390px){.theme-options{grid-template-columns:repeat(2,minmax(0,1fr))}.profile-settings summary{padding:16px}.theme-settings{padding:0 16px 16px}}
+
+/* v64 — reliable settings disclosure */
+.profile-settings-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 18px;border:0;background:transparent;color:var(--text);font-size:17px;font-weight:900;text-align:left;cursor:pointer}
+.profile-settings-toggle:focus-visible{outline:2px solid var(--green);outline-offset:-3px;border-radius:18px}
+.profile-settings .theme-settings[hidden]{display:none!important}
+.profile-settings.is-open .settings-chevron{transform:rotate(180deg)}
+.profile-settings.is-open{border-color:rgba(var(--accent-rgb),.30)}
