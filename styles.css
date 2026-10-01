@@ -913,3 +913,23 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .done .complete,.featured.done .primary-complete{background:rgba(var(--accent-rgb),.10)!important;color:var(--green-soft)!important;border-color:rgba(var(--accent-rgb),.18)!important;box-shadow:none!important}
 .achievement-card.unlocked{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.08),0 16px 40px rgba(var(--accent-rgb),.045)!important}
 .brand-mark{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.24),0 0 24px rgba(var(--accent-rgb),.08)!important}
+
+/* v67 — final theme audit: navigation + player */
+.main-nav{background:linear-gradient(145deg,rgba(var(--surface-rgb),1),rgba(var(--surface-deep-rgb),1))!important;border-color:rgba(var(--accent-rgb),.30)!important}
+.main-nav .main-tab{background:rgba(var(--surface-deep-rgb),.18)!important;border-color:transparent!important;color:var(--muted)!important;box-shadow:none!important}
+.main-nav .main-tab:hover{background:rgba(var(--accent-rgb),.09)!important;border-color:rgba(var(--accent-rgb),.16)!important;color:var(--text)!important}
+.main-nav .main-tab.active,.main-nav button.active{background:linear-gradient(135deg,rgba(var(--accent-rgb),.24),rgba(var(--accent-rgb),.10))!important;border-color:rgba(var(--accent-rgb),.52)!important;color:var(--green)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.10),0 6px 20px rgba(var(--accent-rgb),.07)!important}
+.workout-music{background:linear-gradient(145deg,rgba(var(--surface-rgb),1),rgba(var(--surface-deep-rgb),1))!important;border-color:rgba(var(--accent-rgb),.26)!important}
+.workout-music:after{border-color:rgba(var(--accent-rgb),.12)!important}
+.music-art{background:rgba(var(--surface-deep-rgb),.98)!important;border-color:rgba(var(--accent-rgb),.38)!important;box-shadow:inset 0 0 0 7px rgba(var(--accent-rgb),.045)!important}
+.music-art span{background:var(--green)!important;color:var(--active-text)!important}
+.music-topline span{color:var(--green)!important}
+.music-toggle{background:rgba(var(--accent-rgb),.09)!important;border-color:rgba(var(--accent-rgb),.52)!important;color:var(--green)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.05),0 0 18px rgba(var(--accent-rgb),.07)!important}
+.music-toggle:hover{background:rgba(var(--accent-rgb),.18)!important;border-color:rgba(var(--accent-rgb),.68)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.08),0 0 22px rgba(var(--accent-rgb),.11)!important}
+.music-icon-pause{border-left-color:var(--green)!important;border-right-color:var(--green)!important}
+.music-icon-play{border-left-color:var(--green)!important}
+.music-skip{background:rgba(var(--accent-rgb),.045)!important;border-color:rgba(var(--accent-rgb),.24)!important;color:var(--green)!important}
+.music-skip:hover{background:rgba(var(--accent-rgb),.12)!important;border-color:rgba(var(--accent-rgb),.46)!important;color:var(--accent-2)!important}
+.skip-icon{display:none!important}
+.skip-arrow{display:block;font-size:23px!important;line-height:1!important;font-weight:500!important;color:currentColor;transform:none!important}
+.music-skip:active .skip-arrow{transform:scale(.92)!important}
