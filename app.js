@@ -5,19 +5,19 @@ let currentView='today',workouts=[];
 let sessionTimerHandle=null;
 const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0;
 const MUSIC_TRACKS=[
- {src:'audio/day-1.mp3',title:'Первый день'},
- {src:'audio/sport-life.mp3',title:'Спорт — это моя жизнь'},
- {src:'audio/best-friend.mp3',title:'Лучший друг'},
- {src:'audio/one.mp3',title:'Один'},
- {src:'audio/big-arms.mp3',title:'Большие руки'}
+ {src:'day-1.mp3',title:'Первый день'},
+ {src:'sport-life.mp3',title:'Спорт — это моя жизнь'},
+ {src:'best-friend.mp3',title:'Лучший друг'},
+ {src:'one.mp3',title:'Один'},
+ {src:'big-arms.mp3',title:'Большие руки'}
 ];
 function musicPlaylist(w){return Number(w?.id)===1?MUSIC_TRACKS:MUSIC_TRACKS.slice(1)}
 function currentMusic(w){const list=musicPlaylist(w);return list[musicTrackIndex%list.length]}
 function loadMusicTrack(w,index=musicTrackIndex,autoplay=false){const list=musicPlaylist(w);musicTrackIndex=((index%list.length)+list.length)%list.length;const track=list[musicTrackIndex];workoutAudio.src=track.src;workoutAudio.load();if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{});updateMusicUI(w)}
 function ensureWorkoutMusic(w,autoplay=false){if(!w)return;if(musicWorkoutId!==Number(w.id)){musicWorkoutId=Number(w.id);musicTrackIndex=0;musicUserPaused=false;loadMusicTrack(w,0,autoplay);return}if(!workoutAudio.src)loadMusicTrack(w,musicTrackIndex,autoplay);else if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{})}
 function stopWorkoutMusic(reset=false){workoutAudio.pause();if(reset){try{workoutAudio.currentTime=0}catch{}musicWorkoutId=null;musicTrackIndex=0;musicUserPaused=false}}
-function musicHTML(w){const list=musicPlaylist(w),m=currentMusic(w),num=musicTrackIndex+1;return `<div class="workout-music"><div class="music-art" aria-hidden="true"><span>♫</span></div><div class="music-main"><div class="music-topline"><span>ТРЕК ТРЕНИРОВКИ</span><small>${num} / ${list.length}</small></div><strong class="music-title">${m.title}</strong><div class="music-progress" aria-hidden="true"><i data-music-progress></i></div></div><button class="music-toggle" type="button" data-music-toggle aria-label="${workoutAudio.paused?'Включить':'Поставить на паузу'}">${workoutAudio.paused?'▶':'Ⅱ'}</button></div>`}
-function updateMusicUI(w){const title=document.querySelector('.music-title'),count=document.querySelector('.music-topline small'),btn=document.querySelector('[data-music-toggle]');if(title&&w)title.textContent=currentMusic(w).title;if(count&&w)count.textContent=`${musicTrackIndex+1} / ${musicPlaylist(w).length}`;if(btn){btn.textContent=workoutAudio.paused?'▶':'Ⅱ';btn.setAttribute('aria-label',workoutAudio.paused?'Включить':'Поставить на паузу')}}
+function musicHTML(w){const list=musicPlaylist(w),m=currentMusic(w),num=musicTrackIndex+1;return `<div class="workout-music"><div class="music-art" aria-hidden="true"><span>♫</span></div><div class="music-main"><div class="music-topline"><span>ТРЕК ТРЕНИРОВКИ</span><small>${num} / ${list.length}</small></div><strong class="music-title">${m.title}</strong><div class="music-progress" aria-hidden="true"><i data-music-progress></i></div></div><button class="music-toggle" type="button" data-music-toggle aria-label="${workoutAudio.paused?'Включить':'Поставить на паузу'}" aria-pressed="${workoutAudio.paused?'false':'true'}"><span class="music-icon music-icon-play" aria-hidden="true"></span><span class="music-icon music-icon-pause" aria-hidden="true"></span></button></div>`}
+function updateMusicUI(w){const title=document.querySelector('.music-title'),count=document.querySelector('.music-topline small'),btn=document.querySelector('[data-music-toggle]');if(title&&w)title.textContent=currentMusic(w).title;if(count&&w)count.textContent=`${musicTrackIndex+1} / ${musicPlaylist(w).length}`;if(btn){btn.setAttribute('aria-pressed',workoutAudio.paused?'false':'true');btn.setAttribute('aria-label',workoutAudio.paused?'Включить':'Поставить на паузу')}}
 function bindMusic(){const b=document.querySelector('[data-music-toggle]');if(!b)return;b.onclick=()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;if(workoutAudio.paused){musicUserPaused=false;workoutAudio.play().catch(()=>{})}else{musicUserPaused=true;workoutAudio.pause()}updateMusicUI(w)}}
 workoutAudio.addEventListener('play',()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;updateMusicUI(w)});
 workoutAudio.addEventListener('pause',()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;updateMusicUI(w)});
