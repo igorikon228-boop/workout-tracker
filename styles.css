@@ -847,3 +847,30 @@ body{color:var(--text)}
 .profile-settings .theme-settings[hidden]{display:none!important}
 .profile-settings.is-open .settings-chevron{transform:rotate(180deg)}
 .profile-settings.is-open{border-color:rgba(var(--accent-rgb),.30)}
+
+/* v65 — themes color the whole interface, not only accents */
+:root,[data-theme="forest"]{--surface-rgb:11,22,14;--surface-deep-rgb:4,10,6;--active-text:#101713}
+[data-theme="ocean"]{--surface-rgb:9,19,23;--surface-deep-rgb:4,10,12;--active-text:#0b1619}
+[data-theme="violet"]{--surface-rgb:18,14,25;--surface-deep-rgb:9,6,13;--active-text:#17121d}
+[data-theme="amber"]{--surface-rgb:24,19,10;--surface-deep-rgb:12,9,4;--active-text:#191408}
+[data-theme="rose"]{--surface-rgb:24,13,17;--surface-deep-rgb:12,6,8;--active-text:#1a1013}
+body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 0,#050806 36%,#020503 100%)}
+.brand-lockup,.main-nav{border-color:rgba(var(--accent-rgb),.18)!important;background:linear-gradient(145deg,rgba(var(--surface-rgb),.90),rgba(var(--surface-deep-rgb),.96))!important}
+.brand-kicker,.brand-accent,.brand-name span{color:var(--green)!important}
+.brand-lockup::after{background:linear-gradient(90deg,rgba(var(--accent-rgb),.46),rgba(var(--accent-rgb),0))!important}
+.main-tab.active{background:var(--green)!important;color:var(--active-text)!important}
+.today-context,#planView .week-summary,.profile-progress-card{border-color:rgba(var(--accent-rgb),.27)!important;background:linear-gradient(135deg,rgba(var(--accent-rgb),.095),rgba(var(--surface-rgb),.96) 55%,rgba(var(--accent-rgb),.018))!important}
+.today-context:after{background:rgba(var(--accent-rgb),.07)!important}
+.workout-music,#planView .workout,.profile-stat-grid article,.profile-targets .goal-card,.achievement-card,.reading-fold,.profile-settings{border-color:rgba(var(--accent-rgb),.18)!important;background:linear-gradient(145deg,rgba(var(--surface-rgb),.98),rgba(var(--surface-deep-rgb),.98))!important}
+#planView .workout.done,.achievement-card.unlocked,.reading-fold[open],.profile-settings.is-open{border-color:rgba(var(--accent-rgb),.38)!important}
+#planView .exercise,.reading-body,.theme-option{background:rgba(var(--surface-deep-rgb),.72)!important;border-color:rgba(var(--accent-rgb),.10)!important}
+.profile-achievements,.reading-body,.theme-settings{border-color:rgba(var(--accent-rgb),.12)!important}
+.profile-dashboard-head h2,.profile-section-title,.reading-page>h2,.reading-summary strong,.workout h3,.today-context h2,.music-title,.achievement-copy h3{color:var(--text)!important}
+.profile-section-title{position:relative;padding-left:12px}
+.profile-section-title:before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:3px;border-radius:99px;background:var(--green)}
+.complete,.check-btn,.start-workout,.music-toggle{background:var(--green)!important;color:var(--active-text)!important}
+.music-skip,.brand-reset{border-color:rgba(var(--accent-rgb),.20)!important;color:var(--green)!important}
+.reading-counter{border-color:rgba(var(--accent-rgb),.18)!important;background:rgba(var(--accent-rgb),.055)!important}
+.reading-tip{border-left-color:var(--green)!important;background:rgba(var(--accent-rgb),.065)!important}
+.achievement-progress{background:rgba(var(--accent-rgb),.09)!important}
+.profile-settings-toggle,.theme-settings-label{color:var(--text)}
