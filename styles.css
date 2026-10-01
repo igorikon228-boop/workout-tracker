@@ -709,3 +709,30 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 .today-context.is-done{border-color:rgba(124,255,107,.38);background:linear-gradient(135deg,rgba(124,255,107,.12),rgba(7,16,10,.96) 58%)}
 .today-context.is-done h2 span{display:inline-block;margin-left:4px;color:var(--green)}
 @media(max-width:520px){.today-context{padding:16px;border-radius:18px}.today-context h2{font-size:21px}.today-context p{font-size:13px}}
+
+/* v58 — profile statistics architecture */
+.profile-dashboard{max-width:860px;margin:0 auto}
+.profile-dashboard-head{align-items:flex-end;margin-bottom:14px}
+.profile-dashboard-head .eyebrow{margin-bottom:5px}
+.profile-dashboard-head h2{margin:0;font-size:clamp(28px,6vw,42px);letter-spacing:-.04em}
+.profile-position{margin:7px 0 0;color:var(--muted);font-size:13px;font-weight:700}
+.profile-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 12px}
+.profile-stat-grid article{min-height:112px;padding:15px 16px;border:1px solid rgba(32,255,69,.18);border-radius:18px;background:linear-gradient(145deg,rgba(11,22,14,.98),rgba(4,10,6,.96));display:flex;flex-direction:column;justify-content:space-between}
+.profile-stat-grid span{max-width:135px;color:var(--muted);font-size:12px;line-height:1.25}
+.profile-stat-grid strong{font-size:clamp(27px,7vw,39px);line-height:1;font-weight:900;letter-spacing:-.045em;color:var(--text)}
+.profile-progress-card{display:grid;grid-template-columns:190px minmax(0,1fr);align-items:center;gap:24px;padding:22px;margin:0 0 22px;border:1px solid rgba(32,255,69,.22);border-radius:22px;background:linear-gradient(135deg,rgba(32,255,69,.065),rgba(7,16,10,.98) 50%)}
+.profile-ring{--size:168px;width:var(--size);height:var(--size);border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) calc(var(--profile-pct)*1%),rgba(32,255,69,.10) 0);box-shadow:0 0 35px rgba(32,255,69,.08)}
+.profile-ring:before{content:"";position:absolute}
+.profile-ring-core{width:126px;height:126px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#050b07;border:1px solid rgba(32,255,69,.16);box-shadow:inset 0 0 24px rgba(32,255,69,.04)}
+.profile-ring-core strong{font-size:35px;line-height:1;color:var(--text);letter-spacing:-.05em}
+.profile-ring-core span{margin-top:8px;color:var(--green);font-size:12px;font-weight:900;letter-spacing:.08em}
+.profile-progress-copy .eyebrow{margin:0 0 6px}
+.profile-progress-copy h3{margin:0 0 8px;font-size:23px}
+.profile-progress-copy p:last-child{margin:0;color:var(--muted);font-size:14px}
+.profile-section-head{margin:0 0 10px}
+.profile-section-head .eyebrow{margin:0 0 4px}
+.profile-section-head h3{margin:0}
+.profile-dashboard .profile-targets{margin-top:0}
+.profile-dashboard .profile-achievements{margin-top:26px}
+@media(max-width:560px){.profile-dashboard-head{align-items:center}.profile-stat-grid article{min-height:100px;padding:14px}.profile-progress-card{grid-template-columns:1fr;justify-items:center;text-align:center;gap:15px;padding:20px 16px}.profile-ring{--size:154px}.profile-ring-core{width:116px;height:116px}.profile-ring-core strong{font-size:32px}.profile-progress-copy h3{font-size:20px}}
+@media(max-width:350px){.profile-stat-grid{grid-template-columns:1fr}.profile-stat-grid article{min-height:88px}}
