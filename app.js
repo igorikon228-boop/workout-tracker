@@ -1,7 +1,7 @@
 const KEY='four-weeks-strength-v10';
 let state=JSON.parse(localStorage.getItem(KEY)||'{}');
 state.done=state.done||{};state.notes=state.notes||{};state.session=state.session||null;if(state.session&&['ready','active'].includes(state.session.phase))state.session.phase='set';state.missed=state.missed||{};state.readArticles=state.readArticles||{};state.restSkips=Number(state.restSkips)||0;if('theme' in state){delete state['theme'];localStorage.setItem(KEY,JSON.stringify(state))}
-let currentView='today',workouts=[];
+let currentView='today',workouts=[],planWeek=null;
 let sessionTimerHandle=null;
 const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0,musicContextWorkout=null;
 const MUSIC_TRACKS=[
@@ -90,11 +90,25 @@ function render(){
  document.querySelectorAll('.main-tab').forEach(b=>b.classList.toggle('active',b.dataset.view===currentView));
  renderToday(); renderProfile(); renderPlan(); renderReading(); bind(); syncWelcome();
 }
+function currentPlanWeek(){
+ if(!workouts.length)return 1;
+ const today=isoLocal(),first=workouts[0].date,last=workouts[workouts.length-1].date;
+ if(today<first)return 1;
+ if(today>last)return 4;
+ const found=workouts.find(w=>w.date===today);
+ if(found)return found.week;
+ const elapsed=Math.floor((new Date(today+'T12:00:00')-new Date(first+'T12:00:00'))/86400000);
+ return Math.max(1,Math.min(4,Math.floor(elapsed/7)+1));
+}
 function renderPlan(){
+ const activeWeek=currentPlanWeek();
+ if(!planWeek||planWeek<1||planWeek>4)planWeek=activeWeek;
  const summary=document.querySelector('#weekSummary');
  if(summary) summary.innerHTML=`<p class="plan-intro">Здесь ты можешь ознакомиться с планом тренировок на 4 недели.</p>`;
- const tabs=document.querySelector('#weekTabs'); if(tabs) tabs.innerHTML='';
- document.querySelector('#workouts').innerHTML=workouts.map(w=>card(w)).join('');
+ const tabs=document.querySelector('#weekTabs');
+ if(tabs)tabs.innerHTML=[1,2,3,4].map(week=>`<button type="button" class="week-tab ${planWeek===week?'active':''}" data-plan-week="${week}"><span>${week} неделя</span>${week===activeWeek?'<small>Текущая</small>':''}</button>`).join('');
+ document.querySelector('#workouts').innerHTML=workouts.filter(w=>w.week===planWeek).map(w=>card(w)).join('');
+ document.querySelectorAll('[data-plan-week]').forEach(btn=>btn.onclick=()=>{planWeek=Number(btn.dataset.planWeek);renderPlan();bind()});
 }
 function specTotal(spec){
  const m=String(spec||'').match(/^(\d+)×(\d+)(?:\s|$)/); return m?Number(m[1])*Number(m[2]):0;
