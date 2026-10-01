@@ -799,3 +799,20 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 @media(min-width:901px){#planView,#readingView,#profileView{max-width:960px}.workouts{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}#planView .week-summary{grid-column:1/-1}.reading-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.reading-fold[open]{grid-column:1/-1}.profile-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.profile-stat-grid article{min-height:122px}.profile-progress-card{grid-template-columns:190px minmax(0,1fr)}.achievements-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){#planView,#readingView,#profileView{width:100%}#planView .week-summary{padding:15px 16px;border-radius:18px}#planView .workout{padding:16px;border-radius:18px}#planView .exercise-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.reading-page>h2{font-size:27px}.reading-lead{font-size:13px}.reading-fold summary{padding:14px!important}.profile-dashboard-head h2{font-size:30px}.achievement-card{grid-template-columns:112px minmax(0,1fr);min-height:118px}.achievement-copy{min-width:0}}
 @media(max-width:430px){#planView .exercise-grid{grid-template-columns:1fr}.reading-fold summary{grid-template-columns:34px minmax(0,1fr) 22px!important}.achievement-card{grid-template-columns:96px minmax(0,1fr);min-height:108px}.achievement-copy{padding:10px}.achievement-copy h3{font-size:1rem}.achievement-copy p{font-size:.76rem}}
+
+/* v62 — softer, balanced text palette */
+:root{
+ --green:#54d968;
+ --green-soft:#8fdc88;
+ --text:#e3e9e4;
+ --muted:#939f96;
+ --line:rgba(84,217,104,.18)
+}
+body{color:var(--text)}
+.eyebrow,.today-context-kicker,.profile-ring-core span,.reading-num,.reading-chevron,.achievement-numbers span{color:var(--green)}
+.main-tab.active{background:#dce5de;color:#111713}
+.brand-title,.workout h3,.exercise strong,.music-title,.today-context h2,.profile-dashboard-head h2,.profile-stat-grid strong,.profile-section-title,.reading-page>h2,.reading-summary strong,.reading-body p,.achievement-copy h3{color:var(--text)}
+.complete,.check-btn,.start-workout{background:var(--green);color:#061008}
+.profile-targets .goal-card strong,.reading-summary small{color:var(--green-soft)!important}
+.profile-ring{background:conic-gradient(var(--green) calc(var(--profile-pct)*1%),rgba(84,217,104,.10) 0);box-shadow:0 0 28px rgba(84,217,104,.055)}
+.achievement-progress>div{background:linear-gradient(90deg,var(--green),var(--green-soft))}
