@@ -698,3 +698,14 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 .skip-icon.next:before{right:3px;border-left:9px solid var(--green)}.skip-icon.next:after{right:1px}
 @media(min-width:701px){.workout-music{grid-template-columns:58px minmax(180px,1fr) auto;padding:14px 16px}.music-art{width:58px;height:58px}.music-controls{gap:10px}.music-skip{width:46px;height:46px}.music-toggle{width:58px;height:58px}}
 @media(max-width:520px){.workout-music{grid-template-columns:46px minmax(0,1fr);grid-template-areas:"art main" "controls controls";gap:10px 12px;padding:12px}.music-art{grid-area:art;width:46px;height:46px}.music-main{grid-area:main;align-self:center}.music-controls{grid-area:controls;grid-template-columns:52px 64px 52px;justify-content:center;gap:12px;margin-top:4px}.music-skip{width:52px;height:48px}.music-toggle{width:64px;height:52px}.music-title{font-size:14px}}
+
+/* v55 — workout context */
+.today-context{position:relative;margin:0 0 14px;padding:18px 19px;border:1px solid rgba(32,255,69,.28);border-radius:20px;background:linear-gradient(135deg,rgba(32,255,69,.105),rgba(7,16,10,.96) 54%,rgba(32,255,69,.025));overflow:hidden}
+.today-context:after{content:"";position:absolute;width:120px;height:120px;right:-54px;top:-60px;border-radius:50%;background:rgba(32,255,69,.08);filter:blur(2px)}
+.today-context-kicker{position:relative;z-index:1;margin-bottom:6px;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.16em}
+.today-context h2{position:relative;z-index:1;margin:0 0 7px;color:var(--text);font-size:24px;line-height:1.1;letter-spacing:-.02em}
+.today-context h2 span{color:var(--green)}
+.today-context p{position:relative;z-index:1;margin:3px 0;color:var(--muted);font-size:14px;line-height:1.45}
+.today-context.is-done{border-color:rgba(124,255,107,.38);background:linear-gradient(135deg,rgba(124,255,107,.12),rgba(7,16,10,.96) 58%)}
+.today-context.is-done h2 span{display:inline-block;margin-left:4px;color:var(--green)}
+@media(max-width:520px){.today-context{padding:16px;border-radius:18px}.today-context h2{font-size:21px}.today-context p{font-size:13px}}
