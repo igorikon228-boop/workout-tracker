@@ -671,3 +671,7 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 .music-toggle{position:relative;z-index:1;width:48px;height:48px;border-radius:14px;border:1px solid rgba(32,255,69,.55);background:var(--green);color:#020503;font-size:18px;line-height:1;font-weight:1000;cursor:pointer;box-shadow:0 0 18px rgba(32,255,69,.10)}
 .music-toggle:active{transform:scale(.97)}.music-toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 @media(max-width:360px){.workout-music{grid-template-columns:44px minmax(0,1fr) 44px;gap:9px;padding:10px}.music-art,.music-toggle{width:44px;height:44px}.music-title{font-size:13px}}
+
+/* v48 — branded player controls */
+.music-toggle{display:grid;place-items:center;background:rgba(32,255,69,.08)!important;color:var(--green)!important;border:1px solid rgba(32,255,69,.55)!important;box-shadow:inset 0 0 0 1px rgba(32,255,69,.06),0 0 18px rgba(32,255,69,.08)!important}
+.music-toggle:hover{background:rgba(32,255,69,.14)!important}.music-icon{grid-area:1/1;display:block;transition:opacity .14s ease,transform .14s ease}.music-icon-pause{width:15px;height:18px;border-left:5px solid var(--green);border-right:5px solid var(--green);opacity:1}.music-icon-play{width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid var(--green);margin-left:3px;opacity:0;transform:scale(.8)}.music-toggle[aria-pressed="false"] .music-icon-pause{opacity:0;transform:scale(.8)}.music-toggle[aria-pressed="false"] .music-icon-play{opacity:1;transform:scale(1)}
