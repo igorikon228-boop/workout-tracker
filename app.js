@@ -34,7 +34,7 @@ const isoLocal=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.get
 const addDays=(iso,n)=>{const d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+n);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const round5=n=>Math.max(5,Math.round(n/5)*5);
-const dayName=date=>new Intl.DateTimeFormat('ru-RU',{weekday:'long'}).format(new Date(date+'T12:00:00')).replace('.', '');
+const dayName=date=>{const name=new Intl.DateTimeFormat('ru-RU',{weekday:'long'}).format(new Date(date+'T12:00:00')).replace('.', '');return name.charAt(0).toLocaleUpperCase('ru-RU')+name.slice(1)};
 const extraPool=[
  ['Выпады · на каждую ногу',3,'10'],['Ягодичный мостик',3,'15'],['Ягодичный мостик',3,'12'],['Супермен',3,'12'],
  ['Обратные выпады · на каждую ногу',3,'10'],['Скручивания',3,'15'],['Боковая планка · на каждую сторону',2,'25 сек'],['Подъёмы на носки',3,'18'],
