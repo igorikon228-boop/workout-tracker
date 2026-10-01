@@ -111,7 +111,7 @@ const ACHIEVEMENTS=[
  {id:'squats500',title:'Давид и Ч.',desc:'Выполнить 500 приседаний',img:'achievement-squats.jpg',goal:500},
  {id:'pushups100',title:'Мастер Отжиманий',desc:'Выполнить 100 отжиманий',img:'achievement-pushups.jpg',goal:100},
  {id:'fox',title:'На фоксе',desc:'Пропустить отдых 30 раз',img:'achievement-fox.jpg',goal:30},
- {id:'reader',title:'Читатель',desc:'Прочитать 20 статей',img:'achievement-reader.jpg',goal:20},
+ {id:'reader',title:'Читатель',desc:'Прочитать 20 статей',img:'achievement-reader.png',goal:20},
  {id:'week1',title:'1 Неделя',desc:'Завершить 7 тренировок',img:'achievement-week1.jpg',goal:7},
  {id:'week2',title:'2 Неделя',desc:'Завершить 14 тренировок',img:'achievement-week2.jpg',goal:14},
  {id:'week3',title:'3 Неделя',desc:'Завершить 21 тренировку',img:'achievement-week3.jpg',goal:21},
