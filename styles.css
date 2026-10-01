@@ -933,3 +933,27 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .skip-icon{display:none!important}
 .skip-arrow{display:block;font-size:23px!important;line-height:1!important;font-weight:500!important;color:currentColor;transform:none!important}
 .music-skip:active .skip-arrow{transform:scale(.92)!important}
+
+/* v68 — workout session + completion fully follow selected theme */
+.next-hint,.up-next{border-color:rgba(var(--accent-rgb),.24)!important;background:rgba(var(--accent-rgb),.055)!important;color:var(--muted)!important}
+.next-hint strong,.up-next strong{color:var(--text)!important}
+.up-next span{color:var(--green)!important}
+.up-next small,.rest-label,.timed-caption,.timer-small span{color:var(--muted)!important}
+.session-progress{background:rgba(var(--accent-rgb),.09)!important}
+.session-progress div{background:linear-gradient(90deg,var(--green),var(--accent-2))!important;box-shadow:0 0 18px rgba(var(--accent-rgb),.16)!important}
+.round-chip{border-color:rgba(var(--accent-rgb),.28)!important;background:rgba(var(--accent-rgb),.06)!important;color:var(--green)!important}
+.timer-ring svg{filter:drop-shadow(0 0 12px rgba(var(--accent-rgb),.12))!important}
+.ring-bg{stroke:rgba(var(--accent-rgb),.13)!important}
+.ring-fg,.prepare .ring-fg,.exercise .ring-fg{stroke:var(--green)!important}
+.prepare .rest-label,.exercise .rest-label{color:var(--text)!important}
+.completion-overlay{background:rgba(var(--surface-deep-rgb),.80)!important}
+.completion-card{border-color:rgba(var(--accent-rgb),.32)!important;background:radial-gradient(circle at 50% 0%,rgba(var(--accent-rgb),.12),transparent 36%),rgb(var(--surface-rgb))!important}
+.completion-mark{background:linear-gradient(135deg,var(--green),var(--accent-2))!important;color:var(--active-text)!important;box-shadow:0 0 36px rgba(var(--accent-rgb),.18)!important}
+.completion-card .eyebrow{color:var(--green)!important}
+.completion-card h2{color:var(--text)!important}
+.completion-sub,.completion-card small{color:var(--muted)!important}
+.completion-stats article{background:rgba(var(--surface-deep-rgb),.72)!important;border-color:rgba(var(--accent-rgb),.17)!important}
+.completion-stats span{color:var(--muted)!important}
+.completion-stats strong{color:var(--text)!important}
+.completion-progress{background:rgba(var(--accent-rgb),.10)!important}
+.completion-progress i{background:linear-gradient(90deg,var(--green),var(--accent-2))!important}
