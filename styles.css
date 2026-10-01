@@ -659,3 +659,15 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 
 .workout-music{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px;padding:12px 14px;border:1px solid rgba(32,255,69,.24);border-radius:16px;background:linear-gradient(180deg,rgba(32,255,69,.065),rgba(32,255,69,.025))}
 .music-copy{min-width:0;display:flex;flex-direction:column;gap:3px}.music-copy span{font-size:10px;letter-spacing:.13em;color:var(--muted);font-weight:800}.music-copy strong{font-size:14px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.music-toggle{flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(32,255,69,.45);background:var(--green);color:#020503;font-size:18px;font-weight:900;cursor:pointer}.music-toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+
+/* v47 — player */
+.workout-music{position:relative;display:grid;grid-template-columns:52px minmax(0,1fr) 48px;align-items:center;gap:12px;margin:0 0 14px;padding:12px;border:1px solid rgba(32,255,69,.28);border-radius:18px;background:linear-gradient(135deg,rgba(32,255,69,.10),rgba(7,16,10,.96) 48%,rgba(32,255,69,.035));overflow:hidden}
+.workout-music:after{content:"";position:absolute;inset:auto -28px -38px auto;width:90px;height:90px;border-radius:50%;border:1px solid rgba(32,255,69,.12);pointer-events:none}
+.music-art{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#020503;border:1px solid rgba(32,255,69,.38);box-shadow:inset 0 0 0 7px rgba(32,255,69,.045)}
+.music-art span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--green);color:#020503;font-size:12px;font-weight:900}
+.music-main{min-width:0}.music-topline{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}.music-topline span{font-size:9px;line-height:1.2;letter-spacing:.14em;color:var(--green);font-weight:900}.music-topline small{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}
+.music-title{display:block;color:var(--text);font-size:14px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-progress{height:3px;margin-top:8px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden}.music-progress i{display:block;width:0;height:100%;border-radius:inherit;background:var(--green);transition:width .3s linear}
+.music-toggle{position:relative;z-index:1;width:48px;height:48px;border-radius:14px;border:1px solid rgba(32,255,69,.55);background:var(--green);color:#020503;font-size:18px;line-height:1;font-weight:1000;cursor:pointer;box-shadow:0 0 18px rgba(32,255,69,.10)}
+.music-toggle:active{transform:scale(.97)}.music-toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+@media(max-width:360px){.workout-music{grid-template-columns:44px minmax(0,1fr) 44px;gap:9px;padding:10px}.music-art,.music-toggle{width:44px;height:44px}.music-title{font-size:13px}}
