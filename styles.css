@@ -656,3 +656,6 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 .workout.is-missed .date,.missed-note{color:var(--danger-soft)}
 .future-note,.workout-status.future{color:var(--muted);border-color:rgba(154,167,157,.16);background:rgba(154,167,157,.05)}
 @media(max-width:700px){#todayWorkout .exercise-label{color:var(--green)!important}#todayWorkout .active-step h2,#todayWorkout .work-target strong{color:var(--text)!important}#todayWorkout .next-simple{color:var(--muted)!important}}
+
+.workout-music{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px;padding:12px 14px;border:1px solid rgba(32,255,69,.24);border-radius:16px;background:linear-gradient(180deg,rgba(32,255,69,.065),rgba(32,255,69,.025))}
+.music-copy{min-width:0;display:flex;flex-direction:column;gap:3px}.music-copy span{font-size:10px;letter-spacing:.13em;color:var(--muted);font-weight:800}.music-copy strong{font-size:14px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.music-toggle{flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(32,255,69,.45);background:var(--green);color:#020503;font-size:18px;font-weight:900;cursor:pointer}.music-toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
