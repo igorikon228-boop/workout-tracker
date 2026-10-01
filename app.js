@@ -13,9 +13,9 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const round5=n=>Math.max(5,Math.round(n/5)*5);
 const dayName=date=>new Intl.DateTimeFormat('ru-RU',{weekday:'long'}).format(new Date(date+'T12:00:00')).replace('.', '');
 const extraPool=[
- ['Выпады',3,'10/нога'],['Ягодичный мостик',3,'15'],['Ягодичный мостик',3,'12'],['Супермен',3,'12'],
- ['Обратные выпады',3,'10/нога'],['Скручивания',3,'15'],['Боковая планка',2,'25 сек/сторона'],['Подъёмы на носки',3,'18'],
- ['Мёртвый жук',3,'10/сторона'],['Кобра',3,'25 сек'],['Подъёмы на носки',3,'18'],['Подъёмы на носки',2,'15']
+ ['Выпады · на каждую ногу',3,'10'],['Ягодичный мостик',3,'15'],['Ягодичный мостик',3,'12'],['Супермен',3,'12'],
+ ['Обратные выпады · на каждую ногу',3,'10'],['Скручивания',3,'15'],['Боковая планка · на каждую сторону',2,'25 сек'],['Подъёмы на носки',3,'18'],
+ ['Мёртвый жук · на каждую сторону',3,'10'],['Кобра',3,'25 сек'],['Подъёмы на носки',3,'18'],['Подъёмы на носки',2,'15']
 ];
 function extraFor(day,week){if(day%7===6)return 'Восстановление · лёгкая мобильность 8–10 мин';let e=extraPool[(day+week*2)%extraPool.length];let bump=week>=3&&/^(\d+)$/.test(e[2])?String(+e[2]+3):e[2];return `${e[0]} ${e[1]}×${bump}`}
 function repSpec(max,week,type){
@@ -104,7 +104,7 @@ function syncWelcome(){
 }
 document.querySelector('#resetBtn').onclick=()=>{if(confirm('Сбросить персональную программу, результаты и пройти стартовый тест заново?')){localStorage.removeItem(KEY);sessionStorage.removeItem('welcomeDismissed');state={done:{},notes:{},session:null,missed:{},readArticles:{},restSkips:0};workouts=[];currentView='today';render()}};
 function parseSpec(name,spec){if(!spec||spec==='—')return[];let m=spec.match(/(\d+)×(.+)/);if(!m)return[{name,target:spec,set:1,sets:1,rest:60}];let n=+m[1],target=m[2].trim();return Array.from({length:n},(_,i)=>({name,target,set:i+1,sets:n,rest:60}))}
-function extraParts(extra){const m=String(extra||'').match(/^(.+?)\s+(\d+)×(.+)$/);if(!m)return{name:extra,spec:extra};const name=m[1].trim(),sets=+m[2];let target=m[3].trim();target=target.replace(/^(\d+)\/нога$/,'$1').replace(/^(\d+)\/сторона$/,'$1').replace(/^(\d+)\s*сек\/сторона$/,'$1 сек');return{name,spec:`${sets}×${target}`}}
+function extraParts(extra){const m=String(extra||'').match(/^(.+?)\s+(\d+)×(.+)$/);if(!m)return{name:extra,spec:extra};let name=m[1].trim(),sets=+m[2],target=m[3].trim();if(/\/нога$/.test(target)){name+=' · на каждую ногу';target=target.replace('/нога','')}else if(/\/сторона$/.test(target)){name+=' · на каждую сторону';target=target.replace('/сторона','')}return{name,spec:`${sets}×${target.trim()}`}}
 function stepsFor(w){const ex=extraParts(w.extra),groups=[parseSpec('Отжимания',w.push),parseSpec('Приседания',w.squat),parseSpec('Планка',w.plank),parseSpec(ex.name,ex.spec)].filter(g=>g.length),steps=[],max=Math.max(0,...groups.map(g=>g.length));for(let round=0;round<max;round++)groups.forEach(g=>{if(g[round])steps.push({...g[round],round:round+1,rest:35})});return steps.map((s,i)=>({...s,next:i<steps.length-1?steps[i+1].name:null}))}
 function finishSessionFromPlan(id){const s=state.session;if(!s||Number(s.id)!==Number(id))return;const w=workouts.find(x=>Number(x.id)===Number(id));if(!w)return;if(w.date>isoLocal()){alert('Тренировку из будущего нельзя отметить выполненной.');return}if(!confirm('Отметить начатую тренировку как полностью выполненную? Незавершённые подходы будут считаться выполненными.'))return;clearSessionTimer();const steps=stepsFor(w),doneCountBefore=Object.values(state.done||{}).filter(Boolean).length;state.done[w.id]=true;if(state.missed?.[w.id])delete state.missed[w.id];state.lastCompletion={id:w.id,duration:Math.max(1,Math.round((Date.now()-(s.startedAt||Date.now()))/1000)),sets:steps.length,total:steps.length,programDone:doneCountBefore+(state.done[w.id]?1:0),programTotal:workouts.length,at:Date.now()};state.session=null;save();render();showCompletion()}
 function startSession(id){clearSessionTimer();if(state.session&&Number(state.session.id)!==Number(id)){currentView='today';render();return}state.session={id,index:0,phase:'ready',remaining:0,startedAt:Date.now(),completedSets:0,paused:false,pausedAt:null};save();render()}
