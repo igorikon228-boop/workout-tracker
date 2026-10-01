@@ -754,3 +754,48 @@ body{background:radial-gradient(circle at 50% -10%,rgba(32,255,69,.09),transpare
 .profile-dashboard .profile-achievements{margin-top:28px;padding-top:22px;border-top:1px solid rgba(32,255,69,.12)}
 .profile-achievements>.profile-section-title{margin-bottom:13px}
 @media(max-width:560px){.profile-dashboard-head{margin-bottom:17px}.profile-section{margin-bottom:19px}.profile-section-title{font-size:17px}.profile-dashboard .profile-achievements{margin-top:24px;padding-top:19px}}
+
+/* v61 — unified visual language based on Workout */
+#planView,#readingView,#profileView{max-width:900px;margin:0 auto}
+#planView .week-summary{display:block;padding:17px 18px;margin:0 0 14px;border:1px solid rgba(32,255,69,.20);border-radius:20px;background:linear-gradient(135deg,rgba(32,255,69,.07),rgba(7,16,10,.96) 58%,rgba(32,255,69,.02));box-shadow:none}
+#planView .plan-intro{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+#planView .workouts{gap:12px}
+#planView .workout{border:1px solid rgba(32,255,69,.18);border-radius:20px;background:linear-gradient(145deg,rgba(11,22,14,.98),rgba(4,10,6,.98));box-shadow:0 16px 42px rgba(0,0,0,.13)}
+#planView .workout.done{border-color:rgba(32,255,69,.34);background:linear-gradient(145deg,rgba(15,39,22,.88),rgba(5,14,8,.98))}
+#planView .workout.is-progress{border-color:rgba(32,255,69,.42);box-shadow:0 0 0 1px rgba(32,255,69,.08),0 16px 42px rgba(0,0,0,.16)}
+#planView .workout.is-future{opacity:.76}
+#planView .date{color:var(--muted)}
+#planView .workout h3{color:var(--text);letter-spacing:-.02em}
+#planView .exercise{border:1px solid rgba(32,255,69,.09);border-radius:14px;background:rgba(2,7,4,.72)}
+#planView .exercise span{color:var(--muted)}
+#planView .exercise strong{color:var(--text)}
+#planView .complete,#planView .continue-workout,#planView .finish-from-plan{border-radius:14px}
+.reading-page{max-width:none;padding-top:2px}
+.reading-page>h2{margin:0 0 7px;color:var(--text);font-size:clamp(27px,5vw,38px);letter-spacing:-.035em}
+.reading-lead{max-width:700px;margin:0 0 14px;color:var(--muted);font-size:14px;line-height:1.5}
+.reading-counter{display:inline-flex;align-items:center;min-height:34px;margin:0 0 14px;padding:0 12px;border:1px solid rgba(32,255,69,.18);border-radius:999px;background:rgba(32,255,69,.055);color:var(--green-soft);font-size:12px;font-weight:900}
+.reading-list{display:grid;gap:10px}
+.reading-fold{margin:0!important;border:1px solid rgba(32,255,69,.17)!important;border-radius:18px!important;background:linear-gradient(145deg,rgba(11,22,14,.98),rgba(4,10,6,.98))!important;box-shadow:0 14px 36px rgba(0,0,0,.12);overflow:hidden}
+.reading-fold[open]{border-color:rgba(32,255,69,.32)!important;box-shadow:0 0 0 1px rgba(32,255,69,.05),0 16px 42px rgba(0,0,0,.16)}
+.reading-fold summary{padding:15px 16px!important;gap:13px}
+.reading-num{color:var(--green)!important}
+.reading-summary small{color:var(--green-soft)!important}
+.reading-summary strong{color:var(--text)}
+.reading-chevron{color:var(--green)!important}
+.reading-body{border-top:1px solid rgba(32,255,69,.10);background:rgba(2,7,4,.40)}
+.reading-body p{color:var(--text)!important}
+.reading-tip{border-left-color:var(--green)!important;background:rgba(32,255,69,.065)!important}
+.profile-dashboard{max-width:none}
+.profile-dashboard-head h2{color:var(--text)}
+.profile-section-title{font-size:18px}
+.profile-stat-grid article,.profile-targets .goal-card{border-color:rgba(32,255,69,.18);background:linear-gradient(145deg,rgba(11,22,14,.98),rgba(4,10,6,.98));box-shadow:0 14px 36px rgba(0,0,0,.11)}
+.profile-progress-card{border-color:rgba(32,255,69,.26);background:linear-gradient(135deg,rgba(32,255,69,.085),rgba(7,16,10,.97) 55%,rgba(32,255,69,.018))}
+.profile-achievements{border-top-color:rgba(32,255,69,.14)}
+.achievement-card{border-color:rgba(32,255,69,.17);background:linear-gradient(145deg,rgba(11,22,14,.98),rgba(4,10,6,.98));box-shadow:0 14px 36px rgba(0,0,0,.13)}
+.achievement-card.unlocked{border-color:rgba(32,255,69,.46);box-shadow:0 0 0 1px rgba(32,255,69,.08),0 16px 40px rgba(0,0,0,.16)}
+.achievement-progress{background:rgba(32,255,69,.09)}
+.achievement-progress>div{background:linear-gradient(90deg,var(--green),var(--green-soft))}
+.achievement-numbers span{color:var(--green)}
+@media(min-width:901px){#planView,#readingView,#profileView{max-width:960px}.workouts{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}#planView .week-summary{grid-column:1/-1}.reading-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.reading-fold[open]{grid-column:1/-1}.profile-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.profile-stat-grid article{min-height:122px}.profile-progress-card{grid-template-columns:190px minmax(0,1fr)}.achievements-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){#planView,#readingView,#profileView{width:100%}#planView .week-summary{padding:15px 16px;border-radius:18px}#planView .workout{padding:16px;border-radius:18px}#planView .exercise-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.reading-page>h2{font-size:27px}.reading-lead{font-size:13px}.reading-fold summary{padding:14px!important}.profile-dashboard-head h2{font-size:30px}.achievement-card{grid-template-columns:112px minmax(0,1fr);min-height:118px}.achievement-copy{min-width:0}}
+@media(max-width:430px){#planView .exercise-grid{grid-template-columns:1fr}.reading-fold summary{grid-template-columns:34px minmax(0,1fr) 22px!important}.achievement-card{grid-template-columns:96px minmax(0,1fr);min-height:108px}.achievement-copy{padding:10px}.achievement-copy h3{font-size:1rem}.achievement-copy p{font-size:.76rem}}
