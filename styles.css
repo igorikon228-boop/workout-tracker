@@ -874,3 +874,42 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .reading-tip{border-left-color:var(--green)!important;background:rgba(var(--accent-rgb),.065)!important}
 .achievement-progress{background:rgba(var(--accent-rgb),.09)!important}
 .profile-settings-toggle,.theme-settings-label{color:var(--text)}
+
+/* v66 — exhaustive theme binding for controls, frames and interaction states */
+:root,[data-theme="forest"]{--accent-2:#8fdc88;--accent-3:#b4dcae}
+[data-theme="ocean"]{--accent-2:#8fcbd7;--accent-3:#afd8df}
+[data-theme="violet"]{--accent-2:#c0a9e2;--accent-3:#d2c2e8}
+[data-theme="amber"]{--accent-2:#dfc185;--accent-3:#e8d5ad}
+[data-theme="rose"]{--accent-2:#df9eae;--accent-3:#e8bdc7}
+.main-nav{border:1px solid rgba(var(--accent-rgb),.22)!important;background:linear-gradient(145deg,rgba(var(--surface-rgb),.98),rgba(var(--surface-deep-rgb),.98))!important;box-shadow:0 14px 42px rgba(0,0,0,.42),inset 0 1px rgba(var(--accent-rgb),.035)!important}
+.main-tab{color:var(--muted)!important;border:1px solid transparent!important;background:transparent!important}
+.main-tab:hover{color:var(--text)!important;background:rgba(var(--accent-rgb),.07)!important;border-color:rgba(var(--accent-rgb),.10)!important}
+.main-tab.active{color:var(--active-text)!important;background:linear-gradient(135deg,var(--green),var(--accent-2))!important;border-color:rgba(var(--accent-rgb),.65)!important;box-shadow:0 5px 18px rgba(var(--accent-rgb),.12)!important}
+.workout,.session,.workout-music,.today-context,#planView .week-summary,#planView .workout,.profile-progress-card,.profile-stat-grid article,.profile-targets .goal-card,.achievement-card,.reading-fold,.profile-settings,.onboarding,.goal-card,.next-hint,.up-next,.work-target,.set-counter,.completion-card{border-color:rgba(var(--accent-rgb),.19)!important}
+.session,.onboarding,.completion-card,.goal-card,.next-hint,.up-next,.work-target,.set-counter{background-color:rgba(var(--surface-rgb),.96)!important}
+.secondary,.continue-workout,.ghost,.brand-reset,.music-skip,.action-btn{border-color:rgba(var(--accent-rgb),.24)!important;background:rgba(var(--accent-rgb),.045)!important;color:var(--text)!important}
+.secondary:hover,.continue-workout:hover,.ghost:hover,.brand-reset:hover,.music-skip:hover,.action-btn:hover{border-color:rgba(var(--accent-rgb),.40)!important;background:rgba(var(--accent-rgb),.11)!important;color:var(--green)!important}
+.primary,.complete,.check-btn,.start-workout,.finish-from-plan,.music-toggle,.workout-status.in-progress{border-color:var(--green)!important;background:linear-gradient(135deg,var(--green),var(--accent-2))!important;color:var(--active-text)!important;box-shadow:0 8px 24px rgba(var(--accent-rgb),.11)!important}
+.primary:hover,.complete:hover,.check-btn:hover,.start-workout:hover,.finish-from-plan:hover,.music-toggle:hover,.workout-status.in-progress:hover{background:linear-gradient(135deg,var(--accent-2),var(--accent-3))!important;color:var(--active-text)!important;box-shadow:0 10px 28px rgba(var(--accent-rgb),.17)!important}
+.music-toggle:focus-visible,.music-skip:focus-visible,.secondary:focus-visible,.continue-workout:focus-visible,.main-tab:focus-visible,.theme-option:focus-visible{outline:2px solid var(--green)!important;outline-offset:2px}
+.music-icon-pause{border-left-color:var(--active-text)!important;border-right-color:var(--active-text)!important}
+.music-icon-play{border-left-color:var(--active-text)!important}
+.skip-icon:before,.skip-icon:after{border-color:var(--green)!important}
+.session-progress div,.progress-bar,.goal-line i,.completion-progress i,.achievement-progress>div{background:linear-gradient(90deg,var(--green),var(--accent-2))!important;box-shadow:0 0 16px rgba(var(--accent-rgb),.13)!important}
+.ring-fg,.prepare .ring-fg,.exercise .ring-fg{stroke:var(--green)!important}
+.timer-ring svg{filter:drop-shadow(0 0 12px rgba(var(--accent-rgb),.10))!important}
+.round-chip,.set-counter,.workout-complete-label,.workout-status.completed{border-color:rgba(var(--accent-rgb),.20)!important;background:rgba(var(--accent-rgb),.065)!important;color:var(--green)!important}
+.baseline-form input,.notes{border-color:rgba(var(--accent-rgb),.18)!important;background:rgba(var(--surface-rgb),.78)!important;color:var(--text)!important}
+.baseline-form input:focus,.notes:focus{border-color:var(--green)!important;outline:1px solid rgba(var(--accent-rgb),.22)!important}
+.start-option{border-color:rgba(var(--accent-rgb),.18)!important;background:rgba(var(--surface-rgb),.72)!important}
+.start-option:has(input:checked){border-color:rgba(var(--accent-rgb),.45)!important;background:rgba(var(--accent-rgb),.08)!important}
+.start-option input{accent-color:var(--green)!important}
+.theme-option{border-color:rgba(var(--accent-rgb),.15)!important;background:rgba(var(--surface-deep-rgb),.72)!important}
+.theme-option:hover{border-color:rgba(var(--accent-rgb),.34)!important;background:rgba(var(--accent-rgb),.07)!important}
+.theme-option.active{border-color:var(--green)!important;background:rgba(var(--accent-rgb),.09)!important;box-shadow:0 0 0 1px rgba(var(--accent-rgb),.08),0 0 22px rgba(var(--accent-rgb),.07)!important}
+.badge{background:rgba(var(--accent-rgb),.08)!important;color:var(--green-soft)!important;border:1px solid rgba(var(--accent-rgb),.12)}
+.status-dot{background:var(--green)!important;box-shadow:0 0 0 5px rgba(var(--accent-rgb),.07)!important}
+.workout.done,.featured.done{border-color:rgba(var(--accent-rgb),.30)!important;background:linear-gradient(145deg,rgba(var(--surface-rgb),.88),rgba(var(--surface-deep-rgb),.98))!important}
+.done .complete,.featured.done .primary-complete{background:rgba(var(--accent-rgb),.10)!important;color:var(--green-soft)!important;border-color:rgba(var(--accent-rgb),.18)!important;box-shadow:none!important}
+.achievement-card.unlocked{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.08),0 16px 40px rgba(var(--accent-rgb),.045)!important}
+.brand-mark{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.24),0 0 24px rgba(var(--accent-rgb),.08)!important}
