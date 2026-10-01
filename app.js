@@ -3,13 +3,26 @@ let state=JSON.parse(localStorage.getItem(KEY)||'{}');
 state.done=state.done||{};state.notes=state.notes||{};state.session=state.session||null;if(state.session&&['ready','active'].includes(state.session.phase))state.session.phase='set';state.missed=state.missed||{};state.readArticles=state.readArticles||{};state.restSkips=Number(state.restSkips)||0;
 let currentView='today',workouts=[];
 let sessionTimerHandle=null;
-const workoutAudio=new Audio();workoutAudio.loop=true;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null;
-function musicMeta(w){return Number(w?.id)===1?{src:'audio/day-1.mp3',title:'Первый день'}:{src:'audio/workout.mp3',title:'Спорт — это моя жизнь'}}
-function ensureWorkoutMusic(w,autoplay=false){if(!w)return;const meta=musicMeta(w);if(musicWorkoutId!==Number(w.id)){workoutAudio.src=meta.src;musicWorkoutId=Number(w.id);musicUserPaused=false}if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{})}
-function stopWorkoutMusic(reset=false){workoutAudio.pause();if(reset){try{workoutAudio.currentTime=0}catch{}musicWorkoutId=null;musicUserPaused=false}}
-function musicHTML(w){const m=musicMeta(w);return `<div class="workout-music"><div class="music-copy"><span>МУЗЫКА ТРЕНИРОВКИ</span><strong>♫ ${m.title}</strong></div><button class="music-toggle" type="button" data-music-toggle aria-label="Пауза или воспроизведение музыки">${workoutAudio.paused?'▶':'⏸'}</button></div>`}
-function bindMusic(){const b=document.querySelector('[data-music-toggle]');if(!b)return;b.onclick=()=>{if(workoutAudio.paused){musicUserPaused=false;workoutAudio.play().catch(()=>{});b.textContent='⏸'}else{musicUserPaused=true;workoutAudio.pause();b.textContent='▶'}}}
-workoutAudio.addEventListener('play',()=>{document.querySelector('[data-music-toggle]')?.replaceChildren('⏸')});workoutAudio.addEventListener('pause',()=>{document.querySelector('[data-music-toggle]')?.replaceChildren('▶')});
+const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0;
+const MUSIC_TRACKS=[
+ {src:'audio/day-1.mp3',title:'Первый день'},
+ {src:'audio/sport-life.mp3',title:'Спорт — это моя жизнь'},
+ {src:'audio/best-friend.mp3',title:'Лучший друг'},
+ {src:'audio/one.mp3',title:'Один'},
+ {src:'audio/big-arms.mp3',title:'Большие руки'}
+];
+function musicPlaylist(w){return Number(w?.id)===1?MUSIC_TRACKS:MUSIC_TRACKS.slice(1)}
+function currentMusic(w){const list=musicPlaylist(w);return list[musicTrackIndex%list.length]}
+function loadMusicTrack(w,index=musicTrackIndex,autoplay=false){const list=musicPlaylist(w);musicTrackIndex=((index%list.length)+list.length)%list.length;const track=list[musicTrackIndex];workoutAudio.src=track.src;workoutAudio.load();if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{});updateMusicUI(w)}
+function ensureWorkoutMusic(w,autoplay=false){if(!w)return;if(musicWorkoutId!==Number(w.id)){musicWorkoutId=Number(w.id);musicTrackIndex=0;musicUserPaused=false;loadMusicTrack(w,0,autoplay);return}if(!workoutAudio.src)loadMusicTrack(w,musicTrackIndex,autoplay);else if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{})}
+function stopWorkoutMusic(reset=false){workoutAudio.pause();if(reset){try{workoutAudio.currentTime=0}catch{}musicWorkoutId=null;musicTrackIndex=0;musicUserPaused=false}}
+function musicHTML(w){const list=musicPlaylist(w),m=currentMusic(w),num=musicTrackIndex+1;return `<div class="workout-music"><div class="music-art" aria-hidden="true"><span>♫</span></div><div class="music-main"><div class="music-topline"><span>ТРЕК ТРЕНИРОВКИ</span><small>${num} / ${list.length}</small></div><strong class="music-title">${m.title}</strong><div class="music-progress" aria-hidden="true"><i data-music-progress></i></div></div><button class="music-toggle" type="button" data-music-toggle aria-label="${workoutAudio.paused?'Включить':'Поставить на паузу'}">${workoutAudio.paused?'▶':'Ⅱ'}</button></div>`}
+function updateMusicUI(w){const title=document.querySelector('.music-title'),count=document.querySelector('.music-topline small'),btn=document.querySelector('[data-music-toggle]');if(title&&w)title.textContent=currentMusic(w).title;if(count&&w)count.textContent=`${musicTrackIndex+1} / ${musicPlaylist(w).length}`;if(btn){btn.textContent=workoutAudio.paused?'▶':'Ⅱ';btn.setAttribute('aria-label',workoutAudio.paused?'Включить':'Поставить на паузу')}}
+function bindMusic(){const b=document.querySelector('[data-music-toggle]');if(!b)return;b.onclick=()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;if(workoutAudio.paused){musicUserPaused=false;workoutAudio.play().catch(()=>{})}else{musicUserPaused=true;workoutAudio.pause()}updateMusicUI(w)}}
+workoutAudio.addEventListener('play',()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;updateMusicUI(w)});
+workoutAudio.addEventListener('pause',()=>{const w=state.session?workouts.find(x=>Number(x.id)===Number(state.session.id)):null;updateMusicUI(w)});
+workoutAudio.addEventListener('timeupdate',()=>{const bar=document.querySelector('[data-music-progress]');if(bar&&Number.isFinite(workoutAudio.duration)&&workoutAudio.duration>0)bar.style.width=Math.min(100,workoutAudio.currentTime/workoutAudio.duration*100)+'%'});
+workoutAudio.addEventListener('ended',()=>{if(!state.session)return;const w=workouts.find(x=>Number(x.id)===Number(state.session.id));if(!w)return;musicUserPaused=false;loadMusicTrack(w,musicTrackIndex+1,true)});
 function clearSessionTimer(){if(sessionTimerHandle!==null){clearTimeout(sessionTimerHandle);sessionTimerHandle=null}}
 function scheduleSessionTick(){clearSessionTimer();sessionTimerHandle=setTimeout(()=>{sessionTimerHandle=null;tickRest()},1000)}
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
