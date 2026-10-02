@@ -947,3 +947,23 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .music-progress-line:hover b,.music-progress-line:focus-visible b{transform:translate(-50%,-50%) scale(1.2);box-shadow:0 0 0 5px rgba(var(--accent-rgb),.13)}
 .music-progress-line:focus-visible:after{content:"";position:absolute;inset:2px -2px;border:1px solid rgba(var(--accent-rgb),.48);border-radius:10px}
 @media(max-width:520px){.music-progress-line{height:22px!important;margin:-7px 2px 2px!important}.music-progress-line b{width:12px!important;height:12px!important}}
+
+/* v82 — show achievement artwork without cropping */
+.achievement-card{min-width:0}
+.achievement-art{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#060806!important}
+.achievement-art img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;display:block!important}
+@media(min-width:701px){
+ .achievements-grid{align-items:start}
+ .achievement-card{display:grid!important;grid-template-columns:minmax(0,1fr)!important}
+ .achievement-art{width:100%!important;height:auto!important;aspect-ratio:1/1!important}
+ .achievement-copy{min-width:0}
+}
+@media(max-width:700px){
+ .achievement-card{display:grid!important;grid-template-columns:124px minmax(0,1fr)!important;min-height:124px!important}
+ .achievement-art{width:124px!important;height:124px!important;aspect-ratio:1/1!important;align-self:start!important}
+ .achievement-copy{min-width:0!important}
+}
+@media(max-width:430px){
+ .achievement-card{grid-template-columns:104px minmax(0,1fr)!important;min-height:104px!important}
+ .achievement-art{width:104px!important;height:104px!important}
+}
