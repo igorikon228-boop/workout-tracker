@@ -135,20 +135,20 @@ function achievementProgress(){
  const done=completedWorkouts(),readCount=Object.values(state.readArticles||{}).filter(Boolean).length,listened=state.listenedTracks||{};return {measure:state.profile?1:0,steady:done>0?1:0,squats500:Math.min(500,squat),pushups100:Math.min(100,push),fox:Math.min(30,Number(state.restSkips)||0),reader:Math.min(20,readCount),mewskul:listened['Мяускулы кота']?1:0,lakeSquat:listened['Присед у озера']?1:0,microkachok:listened['Микрокачок']?1:0,bratstvo:listened['Братство качков']?1:0,week1:Math.min(7,done),week2:Math.min(14,done),week3:Math.min(21,done),week4:Math.min(28,done)};
 }
 const ACHIEVEMENTS=[
- {id:'measure',title:'Замер',desc:'Провести первый стартовый замер',img:'achievement-measure.jpg',goal:1},
- {id:'steady',title:'Планомерно',desc:'Завершить первую тренировку',img:'achievement-steady.jpg',goal:1},
- {id:'squats500',title:'Давид и Ч.',desc:'Выполнить 500 приседаний',img:'achievement-squats.jpg',goal:500},
- {id:'pushups100',title:'Мастер Отжиманий',desc:'Выполнить 100 отжиманий',img:'achievement-pushups.jpg',goal:100},
- {id:'fox',title:'На фоксе',desc:'Пропустить отдых 30 раз',img:'achievement-fox.jpg',goal:30},
+ {id:'measure',title:'Замер',desc:'Провести первый стартовый замер',img:'Замер бицепса в спортзале.png',goal:1},
+ {id:'steady',title:'Планомерно',desc:'Завершить первую тренировку',img:'Фитнес-достижение Планомерно (1).png',goal:1},
+ {id:'squats500',title:'Давид и Ч.',desc:'Выполнить 500 приседаний',img:'Красноногий силач в неоновом зале.png',goal:500},
+ {id:'pushups100',title:'Мастер Отжиманий',desc:'Выполнить 100 отжиманий',img:'Мастер отжиманий.png',goal:100},
+ {id:'fox',title:'На фоксе',desc:'Пропустить отдых 30 раз',img:'Неоновый спортивный значок с широкой улыбкой.png',goal:30},
  {id:'reader',title:'Читатель',desc:'Прочитать 20 статей',img:'achievement-reader.png',goal:20},
  {id:'mewskul',title:'Мяускулы кота',desc:'Прослушать трек «Мяускулы кота» до конца',img:'mewskul.png',goal:1},
  {id:'lakeSquat',title:'Присед у озера',desc:'Прослушать трек «Присед у озера» до конца',img:'prised u ozera.png',goal:1},
  {id:'microkachok',title:'Микрокачок',desc:'Прослушать трек «Микрокачок» до конца',img:'microkachok.png',goal:1},
  {id:'bratstvo',title:'Братство качков',desc:'Прослушать трек «Братство качков» до конца',img:'bratstvo.png',goal:1},
- {id:'week1',title:'1 Неделя',desc:'Завершить 7 тренировок',img:'achievement-week1.jpg',goal:7},
- {id:'week2',title:'2 Неделя',desc:'Завершить 14 тренировок',img:'achievement-week2.jpg',goal:14},
- {id:'week3',title:'3 Неделя',desc:'Завершить 21 тренировку',img:'achievement-week3.jpg',goal:21},
- {id:'week4',title:'4 Неделя',desc:'Завершить 28 тренировок',img:'achievement-week4.jpg',goal:28}
+ {id:'week1',title:'1 Неделя',desc:'Завершить 7 тренировок',img:'Бейдж фитнес-прогресса_ 1 неделя.png',goal:7},
+ {id:'week2',title:'2 Неделя',desc:'Завершить 14 тренировок',img:'Значок второй недели тренировок.png',goal:14},
+ {id:'week3',title:'3 Неделя',desc:'Завершить 21 тренировку',img:'Третья неделя силы.png',goal:21},
+ {id:'week4',title:'4 Неделя',desc:'Завершить 28 тренировок',img:'4 неделя_ мужчина с самолётом.png',goal:28}
 ];
 function renderAchievements(){
  const grid=document.querySelector('#achievementsGrid'); if(!grid||!state.profile)return;
