@@ -5,7 +5,6 @@ let currentView='today',workouts=[],planWeek=null;
 let sessionTimerHandle=null;
 const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0,musicContextWorkout=null,musicRepeat=false;
 const MUSIC_TRACKS=[
- {src:'day-1.mp3',title:'Первый день',firstDayOnly:true},
  {src:'sport-life.mp3',title:'Спорт — это моя жизнь'},
  {src:'best-friend.mp3',title:'Лучший друг'},
  {src:'one.mp3',title:'Один'},
@@ -19,12 +18,11 @@ const MUSIC_TRACKS=[
  {src:'Присед у озера.mp3',title:'Присед у озера'},
  {src:'Рыбная качалка.mp3',title:'Рыбная качалка'}
 ];
-function isProgramFirstDay(w){return Number(w?.id)===1&&isoLocal()===w.date}
-function musicPlaylist(w){return isProgramFirstDay(w)?MUSIC_TRACKS:MUSIC_TRACKS.filter(track=>!track.firstDayOnly)}
+function musicPlaylist(){return MUSIC_TRACKS}
 function currentMusic(w){const list=musicPlaylist(w);return list[musicTrackIndex%list.length]}
 const MUSIC_ACHIEVEMENT_TRACKS=new Set(['Мяускулы кота','Присед у озера','Микрокачок','Братство качков']);
 function markTrackListened(w=activeMusicWorkout()){if(!w)return;const track=currentMusic(w);if(!track||!MUSIC_ACHIEVEMENT_TRACKS.has(track.title)||state.listenedTracks[track.title])return;state.listenedTracks[track.title]=true;save();renderAchievements()}
-function musicKey(w){return isProgramFirstDay(w)?'day1':'regular'}
+function musicKey(){return 'all'}
 function loadMusicTrack(w,index=musicTrackIndex,autoplay=false){if(!w)return;musicContextWorkout=w;const list=musicPlaylist(w);musicTrackIndex=((index%list.length)+list.length)%list.length;const track=list[musicTrackIndex];workoutAudio.src=track.src;workoutAudio.load();if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{});updateMusicUI(w)}
 function ensureWorkoutMusic(w,autoplay=false){if(!w)return;musicContextWorkout=w;const key=musicKey(w);if(musicWorkoutId!==key){musicWorkoutId=key;musicTrackIndex=0;musicUserPaused=false;loadMusicTrack(w,0,autoplay);return}if(!workoutAudio.src)loadMusicTrack(w,musicTrackIndex,autoplay);else if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{})}
 function stopWorkoutMusic(reset=false){workoutAudio.pause();if(reset){try{workoutAudio.currentTime=0}catch{}musicWorkoutId=null;musicTrackIndex=0;musicUserPaused=false;musicContextWorkout=null}}
