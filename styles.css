@@ -901,3 +901,20 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .music-track-option:hover{background:rgba(var(--accent-rgb),.06);color:var(--text)}
 .music-track-option.active{border-color:rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.10);color:var(--green)}
 @media(max-width:520px){.compact-player{padding:12px 13px 13px!important}.compact-player .music-controls{grid-template-columns:38px 38px 50px 38px minmax(30px,1fr)!important;gap:3px!important}.compact-player .music-toggle{width:46px!important;height:46px!important}.music-heart{padding-right:3px;font-size:23px}}
+
+/* v78 — player without like button, phone-safe controls */
+.compact-player .music-controls{grid-template-columns:42px 42px 54px 42px!important;justify-content:center!important;justify-items:center!important;gap:10px!important}
+.music-heart{display:none!important}
+@media(max-width:520px){
+ .compact-player{width:100%!important;min-width:0!important;padding:12px 13px 13px!important}
+ .compact-player .music-now{min-width:0!important}
+ .compact-player .music-controls{grid-template-columns:38px 38px 50px 38px!important;justify-content:center!important;gap:7px!important;width:100%!important}
+ .compact-player .music-title{font-size:12px!important}
+ .music-playlist{max-height:260px!important}
+ .music-track-option{min-width:0!important;padding:10px 9px!important}
+}
+@media(max-width:360px){
+ .compact-player .music-controls{grid-template-columns:36px 36px 48px 36px!important;gap:5px!important}
+ .music-menu-btn,.compact-player .music-skip{width:36px!important;height:36px!important}
+ .compact-player .music-toggle{width:46px!important;height:46px!important}
+}
