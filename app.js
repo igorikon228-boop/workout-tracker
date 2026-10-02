@@ -16,7 +16,8 @@ const MUSIC_TRACKS=[
  {src:'Качок-ковбой.mp3',title:'Качок-ковбой'},
  {src:'Микрокачок.mp3',title:'Микрокачок'},
  {src:'Мяускулы кота.mp3',title:'Мяускулы кота'},
- {src:'Присед у озера.mp3',title:'Присед у озера'}
+ {src:'Присед у озера.mp3',title:'Присед у озера'},
+ {src:'Рыбная качалка.mp3',title:'Рыбная качалка'}
 ];
 function isProgramFirstDay(w){return Number(w?.id)===1&&isoLocal()===w.date}
 function musicPlaylist(w){return isProgramFirstDay(w)?MUSIC_TRACKS:MUSIC_TRACKS.filter(track=>!track.firstDayOnly)}
