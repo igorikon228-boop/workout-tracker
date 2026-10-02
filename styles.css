@@ -918,3 +918,23 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
  .music-menu-btn,.compact-player .music-skip{width:36px!important;height:36px!important}
  .compact-player .music-toggle{width:46px!important;height:46px!important}
 }
+
+/* v79 — centered transport with repeat toggle */
+.compact-player .music-controls{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:48px!important}
+.compact-player .music-menu-btn{position:absolute!important;left:0!important;top:50%!important;transform:translateY(-50%)!important}
+.compact-player .music-repeat{position:absolute!important;right:0!important;top:50%!important;transform:translateY(-50%)!important;width:38px!important;height:38px!important;padding:0!important;border:0!important;border-radius:11px!important;background:transparent!important;color:var(--muted)!important;display:grid!important;place-items:center!important;cursor:pointer}
+.compact-player .music-repeat span{font-size:25px;line-height:1;font-weight:500}
+.compact-player .music-repeat[aria-pressed="true"]{color:var(--green)!important;background:rgba(var(--accent-rgb),.10)!important}
+.compact-player .music-repeat:focus-visible,.compact-player .music-menu-btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+@media(max-width:520px){
+ .compact-player .music-controls{display:flex!important;justify-content:center!important;gap:7px!important;min-height:46px!important}
+ .compact-player .music-menu-btn{left:0!important}
+ .compact-player .music-repeat{right:0!important;width:36px!important;height:36px!important}
+ .compact-player .music-repeat span{font-size:23px}
+}
+@media(max-width:360px){
+ .compact-player .music-controls{gap:4px!important}
+ .compact-player .music-menu-btn,.compact-player .music-repeat{width:34px!important;height:34px!important}
+ .compact-player .music-skip{width:34px!important;height:34px!important}
+ .compact-player .music-toggle{width:44px!important;height:44px!important}
+}
