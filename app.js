@@ -1,6 +1,6 @@
 const KEY='four-weeks-strength-v10';
 let state=JSON.parse(localStorage.getItem(KEY)||'{}');
-state.done=state.done||{};state.notes=state.notes||{};state.session=state.session||null;if(state.session&&['ready','active'].includes(state.session.phase))state.session.phase='set';state.missed=state.missed||{};state.readArticles=state.readArticles||{};state.restSkips=Number(state.restSkips)||0;if('theme' in state){delete state['theme'];localStorage.setItem(KEY,JSON.stringify(state))}
+state.done=state.done||{};state.notes=state.notes||{};state.session=state.session||null;if(state.session&&['ready','active'].includes(state.session.phase))state.session.phase='set';state.missed=state.missed||{};state.readArticles=state.readArticles||{};state.listenedTracks=state.listenedTracks||{};state.restSkips=Number(state.restSkips)||0;if('theme' in state){delete state['theme'];localStorage.setItem(KEY,JSON.stringify(state))}
 let currentView='today',workouts=[],planWeek=null;
 let sessionTimerHandle=null;
 const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0,musicContextWorkout=null,musicRepeat=false;
@@ -21,6 +21,8 @@ const MUSIC_TRACKS=[
 function isProgramFirstDay(w){return Number(w?.id)===1&&isoLocal()===w.date}
 function musicPlaylist(w){return isProgramFirstDay(w)?MUSIC_TRACKS:MUSIC_TRACKS.filter(track=>!track.firstDayOnly)}
 function currentMusic(w){const list=musicPlaylist(w);return list[musicTrackIndex%list.length]}
+const MUSIC_ACHIEVEMENT_TRACKS=new Set(['Мяускулы кота','Присед у озера','Микрокачок','Братство качков']);
+function markTrackListened(w=activeMusicWorkout()){if(!w)return;const track=currentMusic(w);if(!track||!MUSIC_ACHIEVEMENT_TRACKS.has(track.title)||state.listenedTracks[track.title])return;state.listenedTracks[track.title]=true;save();renderAchievements()}
 function musicKey(w){return isProgramFirstDay(w)?'day1':'regular'}
 function loadMusicTrack(w,index=musicTrackIndex,autoplay=false){if(!w)return;musicContextWorkout=w;const list=musicPlaylist(w);musicTrackIndex=((index%list.length)+list.length)%list.length;const track=list[musicTrackIndex];workoutAudio.src=track.src;workoutAudio.load();if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{});updateMusicUI(w)}
 function ensureWorkoutMusic(w,autoplay=false){if(!w)return;musicContextWorkout=w;const key=musicKey(w);if(musicWorkoutId!==key){musicWorkoutId=key;musicTrackIndex=0;musicUserPaused=false;loadMusicTrack(w,0,autoplay);return}if(!workoutAudio.src)loadMusicTrack(w,musicTrackIndex,autoplay);else if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{})}
@@ -38,7 +40,7 @@ workoutAudio.addEventListener('play',()=>updateMusicUI());
 workoutAudio.addEventListener('pause',()=>updateMusicUI());
 workoutAudio.addEventListener('timeupdate',updateMusicProgress);
 workoutAudio.addEventListener('loadedmetadata',updateMusicProgress);
-workoutAudio.addEventListener('ended',()=>{const w=activeMusicWorkout();if(!w)return;musicUserPaused=false;if(musicRepeat){workoutAudio.currentTime=0;workoutAudio.play().catch(()=>{});return}loadMusicTrack(w,musicTrackIndex+1,true)});
+workoutAudio.addEventListener('ended',()=>{const w=activeMusicWorkout();if(!w)return;markTrackListened(w);musicUserPaused=false;if(musicRepeat){workoutAudio.currentTime=0;workoutAudio.play().catch(()=>{});return}loadMusicTrack(w,musicTrackIndex+1,true)});
 function clearSessionTimer(){if(sessionTimerHandle!==null){clearTimeout(sessionTimerHandle);sessionTimerHandle=null}}
 function scheduleSessionTick(){clearSessionTimer();sessionTimerHandle=setTimeout(()=>{sessionTimerHandle=null;tickRest()},1000)}
 const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
@@ -130,7 +132,7 @@ function specTotal(spec){
 function achievementProgress(){
  let push=0,squat=0;
  for(const w of workouts){if(state.done[w.id]){push+=specTotal(w.push);squat+=specTotal(w.squat)}}
- const done=completedWorkouts(),readCount=Object.values(state.readArticles||{}).filter(Boolean).length;return {measure:state.profile?1:0,steady:done>0?1:0,squats500:Math.min(500,squat),pushups100:Math.min(100,push),fox:Math.min(30,Number(state.restSkips)||0),reader:Math.min(20,readCount),week1:Math.min(7,done),week2:Math.min(14,done),week3:Math.min(21,done),week4:Math.min(28,done)};
+ const done=completedWorkouts(),readCount=Object.values(state.readArticles||{}).filter(Boolean).length,listened=state.listenedTracks||{};return {measure:state.profile?1:0,steady:done>0?1:0,squats500:Math.min(500,squat),pushups100:Math.min(100,push),fox:Math.min(30,Number(state.restSkips)||0),reader:Math.min(20,readCount),mewskul:listened['Мяускулы кота']?1:0,lakeSquat:listened['Присед у озера']?1:0,microkachok:listened['Микрокачок']?1:0,bratstvo:listened['Братство качков']?1:0,week1:Math.min(7,done),week2:Math.min(14,done),week3:Math.min(21,done),week4:Math.min(28,done)};
 }
 const ACHIEVEMENTS=[
  {id:'measure',title:'Замер',desc:'Провести первый стартовый замер',img:'achievement-measure.jpg',goal:1},
@@ -139,6 +141,10 @@ const ACHIEVEMENTS=[
  {id:'pushups100',title:'Мастер Отжиманий',desc:'Выполнить 100 отжиманий',img:'achievement-pushups.jpg',goal:100},
  {id:'fox',title:'На фоксе',desc:'Пропустить отдых 30 раз',img:'achievement-fox.jpg',goal:30},
  {id:'reader',title:'Читатель',desc:'Прочитать 20 статей',img:'achievement-reader.png',goal:20},
+ {id:'mewskul',title:'Мяускулы кота',desc:'Прослушать трек «Мяускулы кота» до конца',img:'mewskul.png',goal:1},
+ {id:'lakeSquat',title:'Присед у озера',desc:'Прослушать трек «Присед у озера» до конца',img:'prised u ozera.png',goal:1},
+ {id:'microkachok',title:'Микрокачок',desc:'Прослушать трек «Микрокачок» до конца',img:'microkachok.png',goal:1},
+ {id:'bratstvo',title:'Братство качков',desc:'Прослушать трек «Братство качков» до конца',img:'bratstvo.png',goal:1},
  {id:'week1',title:'1 Неделя',desc:'Завершить 7 тренировок',img:'achievement-week1.jpg',goal:7},
  {id:'week2',title:'2 Неделя',desc:'Завершить 14 тренировок',img:'achievement-week2.jpg',goal:14},
  {id:'week3',title:'3 Неделя',desc:'Завершить 21 тренировку',img:'achievement-week3.jpg',goal:21},
@@ -154,7 +160,7 @@ function syncWelcome(){
  const shouldShow=!state.profile && !sessionStorage.getItem('welcomeDismissed');
  w.classList.toggle('hidden',!shouldShow); document.body.classList.toggle('onboarding-open',shouldShow);
 }
-document.querySelector('#resetBtn').onclick=()=>{if(confirm('Сбросить персональную программу, результаты и пройти стартовый тест заново?')){localStorage.removeItem(KEY);sessionStorage.removeItem('welcomeDismissed');state={done:{},notes:{},session:null,missed:{},readArticles:{},restSkips:0};workouts=[];currentView='today';render()}};
+document.querySelector('#resetBtn').onclick=()=>{if(confirm('Сбросить персональную программу, результаты и пройти стартовый тест заново?')){localStorage.removeItem(KEY);sessionStorage.removeItem('welcomeDismissed');state={done:{},notes:{},session:null,missed:{},readArticles:{},listenedTracks:{},restSkips:0};workouts=[];currentView='today';render()}};
 function parseSpec(name,spec){if(!spec||spec==='—')return[];let m=spec.match(/(\d+)×(.+)/);if(!m)return[{name,target:spec,set:1,sets:1,rest:60}];let n=+m[1],target=m[2].trim();return Array.from({length:n},(_,i)=>({name,target,set:i+1,sets:n,rest:60}))}
 function extraParts(extra){const m=String(extra||'').match(/^(.+?)\s+(\d+)×(.+)$/);if(!m)return{name:extra,spec:extra};let name=m[1].trim(),sets=+m[2],target=m[3].trim();if(/\/нога$/.test(target)){name+=' · на каждую ногу';target=target.replace('/нога','')}else if(/\/сторона$/.test(target)){name+=' · на каждую сторону';target=target.replace('/сторона','')}return{name,spec:`${sets}×${target.trim()}`}}
 function stepsFor(w){const ex=extraParts(w.extra);let extraSteps=parseSpec(ex.name,ex.spec);if(/на каждую сторону/.test(ex.name)&&extraSteps.some(s=>timedSeconds(s)>0)){extraSteps=extraSteps.flatMap(s=>[{...s,side:1,sides:2},{...s,side:2,sides:2}])}const groups=[parseSpec('Отжимания',w.push),parseSpec('Приседания',w.squat),parseSpec('Планка',w.plank),extraSteps].filter(g=>g.length),steps=[],max=Math.max(0,...groups.map(g=>g.length));for(let round=0;round<max;round++)groups.forEach(g=>{if(g[round])steps.push({...g[round],round:round+1,rest:35})});return steps.map((s,i)=>({...s,next:i<steps.length-1?steps[i+1].name:null}))}
