@@ -5,14 +5,21 @@ let currentView='today',workouts=[],planWeek=null;
 let sessionTimerHandle=null;
 const workoutAudio=new Audio();workoutAudio.loop=false;workoutAudio.preload='auto';let musicUserPaused=false,musicWorkoutId=null,musicTrackIndex=0,musicContextWorkout=null;
 const MUSIC_TRACKS=[
- {src:'day-1.mp3',title:'Первый день'},
+ {src:'day-1.mp3',title:'Первый день',firstDayOnly:true},
  {src:'sport-life.mp3',title:'Спорт — это моя жизнь'},
  {src:'best-friend.mp3',title:'Лучший друг'},
  {src:'one.mp3',title:'Один'},
- {src:'big-arms.mp3',title:'Большие руки'}
+ {src:'big-arms.mp3',title:'Большие руки'},
+ {src:'Братство качков.mp3',title:'Братство качков'},
+ {src:'Вчера был пацан.mp3',title:'Вчера был пацан'},
+ {src:'Джонни-машина.mp3',title:'Джонни-машина'},
+ {src:'Качок-ковбой.mp3',title:'Качок-ковбой'},
+ {src:'Микрокачок.mp3',title:'Микрокачок'},
+ {src:'Мяускулы кота.mp3',title:'Мяускулы кота'},
+ {src:'Присед у озера.mp3',title:'Присед у озера'}
 ];
 function isProgramFirstDay(w){return Number(w?.id)===1&&isoLocal()===w.date}
-function musicPlaylist(w){return isProgramFirstDay(w)?MUSIC_TRACKS:MUSIC_TRACKS.slice(1)}
+function musicPlaylist(w){return isProgramFirstDay(w)?MUSIC_TRACKS:MUSIC_TRACKS.filter(track=>!track.firstDayOnly)}
 function currentMusic(w){const list=musicPlaylist(w);return list[musicTrackIndex%list.length]}
 function musicKey(w){return isProgramFirstDay(w)?'day1':'regular'}
 function loadMusicTrack(w,index=musicTrackIndex,autoplay=false){if(!w)return;musicContextWorkout=w;const list=musicPlaylist(w);musicTrackIndex=((index%list.length)+list.length)%list.length;const track=list[musicTrackIndex];workoutAudio.src=track.src;workoutAudio.load();if(autoplay&&!musicUserPaused)workoutAudio.play().catch(()=>{});updateMusicUI(w)}
