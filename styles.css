@@ -967,3 +967,7 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
  .achievement-card{grid-template-columns:104px minmax(0,1fr)!important;min-height:104px!important}
  .achievement-art{width:104px!important;height:104px!important}
 }
+
+/* v94 — postpone action sits below the workout card */
+#todayView .postpone-below{display:block!important;width:100%!important;min-height:48px!important;margin:12px 0 0!important;padding:12px 18px!important;border-radius:14px!important;box-sizing:border-box!important;text-align:center!important;font:inherit!important;font-weight:700!important;line-height:1.2!important}
+@media(max-width:700px){#todayView .postpone-below{width:100%!important;min-height:50px!important;margin-top:10px!important}}
