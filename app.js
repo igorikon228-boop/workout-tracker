@@ -125,7 +125,7 @@ function tamagotchiLoop(now=performance.now()){
  tamagotchiPickMood(now);const anim=tamagotchiState(),def=data.animations[anim]||data.animations.idle,frames=def.frames||[];
  if(anim!==TAMAGOTCHI.anim){TAMAGOTCHI.anim=anim;TAMAGOTCHI.frame=0;TAMAGOTCHI.last=0}
  if(!TAMAGOTCHI.last||now-TAMAGOTCHI.last>=1000/(def.fps||5)){TAMAGOTCHI.frame=(TAMAGOTCHI.frame+1)%Math.max(1,frames.length);TAMAGOTCHI.last=now}
- if(anim==='walk'){const dt=Math.min(32,now-(TAMAGOTCHI.moveLast||now));TAMAGOTCHI.x+=TAMAGOTCHI.dir*dt*.000055;if(TAMAGOTCHI.x>.78){TAMAGOTCHI.x=.78;TAMAGOTCHI.dir=-1}else if(TAMAGOTCHI.x<.02){TAMAGOTCHI.x=.02;TAMAGOTCHI.dir=1}TAMAGOTCHI.moveLast=now}
+ if(anim==='walk'){const dt=Math.min(32,now-(TAMAGOTCHI.moveLast||now));TAMAGOTCHI.x+=TAMAGOTCHI.dir*dt*.000055;if(TAMAGOTCHI.x>.88){TAMAGOTCHI.x=.88;TAMAGOTCHI.dir=-1}else if(TAMAGOTCHI.x<.12){TAMAGOTCHI.x=.12;TAMAGOTCHI.dir=1}TAMAGOTCHI.moveLast=now}
  const f=frames[TAMAGOTCHI.frame]||frames[0];if(f){const pet=host.querySelector('.tamagotchi-pet');if(pet){pet.style.left=(TAMAGOTCHI.x*100)+'%';pet.style.transform='translateX(-50%) scaleX('+(anim==='walk'?TAMAGOTCHI.dir:1)+')';const sp=pet.querySelector('.tamagotchi-sprite');sp.style.backgroundImage='url("'+data.image+'")';sp.style.backgroundPosition=(-f.x)+'px '+(-f.y)+'px';sp.dataset.anim=anim}}
  TAMAGOTCHI.raf=requestAnimationFrame(tamagotchiLoop)
 }
