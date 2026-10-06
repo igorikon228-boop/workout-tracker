@@ -1175,3 +1175,13 @@ body.settings-open{overflow:hidden}
   .settings-card{max-height:calc(100vh - 32px)!important}
  }
 }
+
+
+/* v116 — KACHIGOR tamagotchi above the music player */
+.tamagotchi-host{position:relative;height:126px;margin:2px 0 -1px;overflow:hidden;pointer-events:none}
+.tamagotchi-host:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.35),transparent)}
+.tamagotchi-pet{position:absolute;left:18%;bottom:-1px;width:112px;height:112px;transform-origin:50% 100%;will-change:left,transform}
+.tamagotchi-sprite{width:256px;height:256px;transform:scale(.4375);transform-origin:0 0;background-repeat:no-repeat;image-rendering:auto}
+@media(max-width:700px){.tamagotchi-host{height:108px}.tamagotchi-pet{width:96px;height:96px}.tamagotchi-sprite{transform:scale(.375)}}
+@media(max-width:360px){.tamagotchi-host{height:96px}.tamagotchi-pet{width:88px;height:88px}.tamagotchi-sprite{transform:scale(.34375)}}
+@media(prefers-reduced-motion:reduce){.tamagotchi-pet{will-change:auto}}
