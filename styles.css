@@ -1185,3 +1185,24 @@ body.settings-open{overflow:hidden}
 @media(max-width:700px){.tamagotchi-host{height:108px}.tamagotchi-pet{width:96px;height:96px}.tamagotchi-sprite{transform:scale(.375)}}
 @media(max-width:360px){.tamagotchi-host{height:96px}.tamagotchi-pet{width:88px;height:88px}.tamagotchi-sprite{transform:scale(.34375)}}
 @media(prefers-reduced-motion:reduce){.tamagotchi-pet{will-change:auto}}
+
+
+/* v117 — KACHIGOR's own mini gym at the bottom of Training */
+.kachigor-gym{position:relative;height:230px;margin:18px 0 4px;overflow:hidden;border:1px solid rgba(var(--accent-rgb),.22);border-radius:20px;background:linear-gradient(180deg,#0b1510 0,#07100b 72%,#040806 72%,#020403 100%);box-shadow:inset 0 0 45px rgba(var(--accent-rgb),.035)}
+.kachigor-gym:before{content:"";position:absolute;left:0;right:0;bottom:62px;height:1px;background:rgba(var(--accent-rgb),.28);box-shadow:0 5px 16px rgba(0,0,0,.7)}
+.kachigor-gym-sign{position:absolute;z-index:1;left:16px;top:14px;display:flex;align-items:baseline;gap:8px;color:var(--green);font-size:12px;font-weight:950;letter-spacing:.12em}
+.kachigor-gym-sign small{color:var(--muted);font-size:8px;letter-spacing:.16em}
+.gym-wall{position:absolute;inset:0;overflow:hidden}
+.gym-wall:before{content:"";position:absolute;inset:0 0 62px;background:linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px);background-size:48px 48px}
+.gym-poster{position:absolute;right:18px;top:18px;width:50px;padding:7px 4px;border:1px solid rgba(var(--accent-rgb),.2);background:#09100c;color:var(--green);font-size:20px;font-weight:950;line-height:.7;text-align:center;transform:rotate(2deg)}
+.gym-poster small{font-size:7px;color:var(--muted);letter-spacing:.08em}
+.gym-rack{position:absolute;left:15%;bottom:62px;width:94px;height:70px;border-left:4px solid #28322c;border-right:4px solid #28322c}
+.gym-rack:before,.gym-rack:after{content:"";position:absolute;left:-10px;right:-10px;height:4px;background:#303b34}.gym-rack:before{top:14px}.gym-rack:after{bottom:10px}
+.gym-rack i{position:absolute;left:13px;right:13px;top:8px;height:5px;border-radius:5px;background:#667169}
+.gym-rack i:before,.gym-rack i:after{content:"";position:absolute;top:-5px;width:8px;height:15px;border-radius:3px;background:#414b45}.gym-rack i:before{left:5px}.gym-rack i:after{right:5px}
+.gym-dumbbells{position:absolute;right:17%;bottom:69px;display:flex;gap:8px}.gym-dumbbells i{display:block;width:27px;height:7px;border-radius:5px;background:#56615a;transform:rotate(-10deg)}.gym-dumbbells i:before,.gym-dumbbells i:after{content:"";position:absolute;top:-4px;width:6px;height:15px;border-radius:2px;background:#303a34}.gym-dumbbells i:before{left:2px}.gym-dumbbells i:after{right:2px}
+.kachigor-gym .tamagotchi-host{position:absolute;z-index:3;inset:0;height:auto!important;margin:0!important;overflow:hidden!important}
+.kachigor-gym .tamagotchi-host:after{display:none}
+.kachigor-gym .tamagotchi-pet{bottom:55px}
+@media(max-width:700px){.kachigor-gym{height:205px;margin-top:16px}.kachigor-gym:before{bottom:54px}.gym-wall:before{bottom:54px}.gym-rack{left:9%;bottom:54px;transform:scale(.82);transform-origin:left bottom}.gym-dumbbells{right:9%;bottom:61px;transform:scale(.85);transform-origin:right bottom}.kachigor-gym .tamagotchi-pet{bottom:48px}}
+@media(max-width:360px){.kachigor-gym{height:190px}.gym-rack{opacity:.75}.gym-dumbbells{right:5%}}
