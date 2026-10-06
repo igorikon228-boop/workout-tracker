@@ -1215,3 +1215,11 @@ body.settings-open{overflow:hidden}
 .tamagotchi-pet:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:14px}
 .tamagotchi-pet:active{filter:brightness(1.12)}
 .tamagotchi-sprite{display:block;pointer-events:none}
+
+
+/* v118 — KACHIGOR score board */
+.gym-poster{width:104px!important;min-height:62px!important;padding:8px 9px!important;display:grid!important;grid-template-columns:auto 1fr!important;grid-template-rows:auto auto!important;align-items:end!important;column-gap:7px!important;line-height:1!important;transform:rotate(1deg)!important}
+.gym-poster small{grid-column:1;grid-row:1;color:var(--muted)!important;font-size:7px!important;letter-spacing:.12em!important;text-align:left}
+.gym-poster strong{grid-column:1 / -1;grid-row:2;color:var(--green);font-size:25px;font-weight:950;letter-spacing:-.04em;text-align:left;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gym-poster em{grid-column:2;grid-row:1;color:var(--green-soft);font-size:7px;font-style:normal;font-weight:900;letter-spacing:.1em;text-align:right}
+@media(max-width:700px){.gym-poster{right:12px!important;top:14px!important;width:94px!important;min-height:58px!important}.gym-poster strong{font-size:23px}}
