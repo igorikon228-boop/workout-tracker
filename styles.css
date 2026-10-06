@@ -987,3 +987,12 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 .compact-player .music-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .compact-player .music-visual span{padding:20px;color:var(--muted);font-size:13px;text-align:center}
 @media(max-width:520px){.compact-player .music-visual{height:150px;margin-bottom:10px}}
+
+
+/* v106 — responsive full GIF preview + mobile stability */
+.compact-player .music-visual{height:auto!important;min-height:120px!important;aspect-ratio:16/9!important;margin:4px 0 12px!important;box-sizing:border-box!important}
+.compact-player .music-visual img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:#030503}
+@media(max-width:520px){
+ .compact-player{padding:12px!important}
+ .compact-player .music-visual{height:auto!important;min-height:0!important;aspect-ratio:16/9!important;margin:4px 0 10px!important}
+}
