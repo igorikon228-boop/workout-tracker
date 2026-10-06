@@ -1008,3 +1008,21 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
 @media(prefers-reduced-motion:reduce){
  .compact-player .music-visual .music-visual-bg{filter:blur(18px) saturate(1.1) brightness(.68)!important}
 }
+
+
+/* v111 — settings modal */
+body.settings-open{overflow:hidden}
+.brand-settings{font-family:Arial,sans-serif!important;font-size:18px!important}
+.settings-modal{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:18px;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.settings-modal.hidden{display:none}
+.settings-card{width:min(480px,100%);box-sizing:border-box;padding:20px;border:1px solid rgba(var(--accent-rgb),.24);border-radius:22px;background:linear-gradient(145deg,rgb(var(--surface-rgb)),rgb(var(--surface-deep-rgb)));box-shadow:0 24px 70px rgba(0,0,0,.5)}
+.settings-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.settings-head small{display:block;margin-bottom:4px;color:var(--green);font-size:10px;font-weight:900;letter-spacing:.14em}
+.settings-head h2{margin:0;color:var(--text);font-size:25px}
+.settings-close{width:38px;height:38px;padding:0;border:1px solid rgba(255,255,255,.09);border-radius:11px;background:rgba(255,255,255,.035);color:var(--muted);font-size:25px;line-height:1;cursor:pointer}
+.settings-section{padding:16px;border:1px solid rgba(var(--accent-rgb),.15);border-radius:16px;background:rgba(255,255,255,.025)}
+.settings-section h3{margin:0 0 6px;color:var(--text);font-size:16px}
+.settings-section p{margin:0 0 16px;color:var(--muted);font-size:13px;line-height:1.5}
+.settings-reset{width:100%;min-height:46px;padding:11px 14px;border:1px solid rgba(255,110,110,.38);border-radius:13px;background:rgba(160,38,38,.12);color:#efb0b0;font:inherit;font-weight:800;cursor:pointer}
+.settings-reset:hover{background:rgba(160,38,38,.2)}
+@media(max-width:520px){.settings-modal{align-items:end;padding:10px}.settings-card{padding:18px 16px;border-radius:22px 22px 16px 16px}.settings-head{margin-bottom:16px}}
