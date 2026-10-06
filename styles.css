@@ -996,3 +996,15 @@ body{background:radial-gradient(circle at top left,rgba(var(--accent-rgb),.055) 
  .compact-player{padding:12px!important}
  .compact-player .music-visual{height:auto!important;min-height:0!important;aspect-ratio:16/9!important;margin:4px 0 10px!important}
 }
+
+
+/* v107 — animated ambient GIF background */
+.compact-player .music-visual{position:relative!important;isolation:isolate!important;background:#030503!important}
+.compact-player .music-visual .music-visual-bg{position:absolute!important;z-index:0!important;inset:-24px!important;width:calc(100% + 48px)!important;height:calc(100% + 48px)!important;object-fit:cover!important;filter:blur(24px) saturate(1.25) brightness(.72)!important;transform:scale(1.08)!important;opacity:.82!important;pointer-events:none!important}
+.compact-player .music-visual .music-visual-main{position:relative!important;z-index:1!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;background:transparent!important}
+@media(max-width:520px){
+ .compact-player .music-visual .music-visual-bg{inset:-18px!important;width:calc(100% + 36px)!important;height:calc(100% + 36px)!important;filter:blur(18px) saturate(1.2) brightness(.7)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .compact-player .music-visual .music-visual-bg{filter:blur(18px) saturate(1.1) brightness(.68)!important}
+}
