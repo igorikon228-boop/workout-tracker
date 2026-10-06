@@ -1085,3 +1085,44 @@ body.settings-open{overflow:hidden}
  .settings-head{margin-left:-12px!important;margin-right:-12px!important;padding-left:12px!important;padding-right:12px!important}
  .settings-section{padding:12px!important}
 }
+
+
+/* v114 — settings modal centered on phones */
+@media(max-width:520px){
+ .settings-modal{
+  position:fixed!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  box-sizing:border-box!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  padding:max(14px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom))!important;
+  overflow:auto!important;
+ }
+ .settings-modal.hidden{display:none!important}
+ .settings-card{
+  width:min(100%,480px)!important;
+  max-width:480px!important;
+  max-height:calc(100dvh - 36px)!important;
+  margin:auto!important;
+  padding:18px 16px!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  border:1px solid rgba(var(--accent-rgb),.24)!important;
+  border-radius:20px!important;
+  -webkit-overflow-scrolling:touch;
+ }
+ .settings-head{
+  position:static!important;
+  margin:0 0 16px!important;
+  padding:0!important;
+  background:transparent!important;
+ }
+}
+@supports not (height:100dvh){
+ @media(max-width:520px){
+  .settings-card{max-height:calc(100vh - 36px)!important}
+ }
+}
