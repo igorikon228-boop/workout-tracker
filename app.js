@@ -16,11 +16,12 @@ const MUSIC_TRACKS=[
  {src:'Микрокачок.mp3',title:'Микрокачок'},
  {src:'Мяускулы кота.mp3',title:'Мяускулы кота'},
  {src:'Присед у озера.mp3',title:'Присед у озера'},
- {src:'Рыбная качалка.mp3',title:'Рыбная качалка'}
+ {src:'Рыбная качалка.mp3',title:'Рыбная качалка'},
+ {src:'Кач, динозавр! (1).mp3',title:'Кач, динозавр!'}
 ];
 function musicPlaylist(){return MUSIC_TRACKS}
 function currentMusic(){const list=musicPlaylist();return list[musicTrackIndex%list.length]}
-const MUSIC_ACHIEVEMENT_TRACKS=new Set(['Мяускулы кота','Присед у озера','Микрокачок','Братство качков']);
+const MUSIC_ACHIEVEMENT_TRACKS=new Set(['Мяускулы кота','Присед у озера','Микрокачок','Братство качков','Качок-ковбой','Рыбная качалка','Кач, динозавр!']);
 function markTrackListened(w=activeMusicWorkout()){if(!w)return;const track=currentMusic(w);if(!track||!MUSIC_ACHIEVEMENT_TRACKS.has(track.title)||state.listenedTracks[track.title])return;state.listenedTracks[track.title]=true;save();renderAchievements()}
 function musicKey(){return 'all'}
 function musicSrc(track){return new URL(track.src,document.baseURI).href}
@@ -157,7 +158,7 @@ function specTotal(spec){
 function achievementProgress(){
  let push=0,squat=0;
  for(const w of workouts){if(state.done[w.id]){push+=specTotal(w.push);squat+=specTotal(w.squat)}}
- const done=completedWorkouts(),readCount=Object.values(state.readArticles||{}).filter(Boolean).length,listened=state.listenedTracks||{};return {measure:state.profile?1:0,steady:done>0?1:0,squats500:Math.min(500,squat),pushups100:Math.min(100,push),fox:Math.min(30,Number(state.restSkips)||0),reader:Math.min(20,readCount),mewskul:listened['Мяускулы кота']?1:0,lakeSquat:listened['Присед у озера']?1:0,microkachok:listened['Микрокачок']?1:0,bratstvo:listened['Братство качков']?1:0,week1:Math.min(7,done),week2:Math.min(14,done),week3:Math.min(21,done),week4:Math.min(28,done)};
+ const done=completedWorkouts(),readCount=Object.values(state.readArticles||{}).filter(Boolean).length,listened=state.listenedTracks||{};return {measure:state.profile?1:0,steady:done>0?1:0,squats500:Math.min(500,squat),pushups100:Math.min(100,push),fox:Math.min(30,Number(state.restSkips)||0),reader:Math.min(20,readCount),mewskul:listened['Мяускулы кота']?1:0,lakeSquat:listened['Присед у озера']?1:0,microkachok:listened['Микрокачок']?1:0,bratstvo:listened['Братство качков']?1:0,cowboy:listened['Качок-ковбой']?1:0,fishGym:listened['Рыбная качалка']?1:0,dinosaur:listened['Кач, динозавр!']?1:0,week1:Math.min(7,done),week2:Math.min(14,done),week3:Math.min(21,done),week4:Math.min(28,done)};
 }
 const ACHIEVEMENTS=[
  {id:'measure',title:'Замер',desc:'Провести первый стартовый замер',img:'Замер бицепса в спортзале.png',goal:1},
@@ -170,6 +171,9 @@ const ACHIEVEMENTS=[
  {id:'lakeSquat',title:'Присед у озера',desc:'Прослушать трек «Присед у озера» до конца',img:'prised u ozera.png',goal:1},
  {id:'microkachok',title:'Микрокачок',desc:'Прослушать трек «Микрокачок» до конца',img:'microkachok.png',goal:1},
  {id:'bratstvo',title:'Братство качков',desc:'Прослушать трек «Братство качков» до конца',img:'bratstvo.png',goal:1},
+ {id:'cowboy',title:'Качок-ковбой',desc:'Прослушать трек «Качок-ковбой» до конца',img:'Качок-ковбой — неоновое достижение.png',goal:1},
+ {id:'fishGym',title:'Рыбная качалка',desc:'Прослушать трек «Рыбная качалка» до конца',img:'Рыбная качалка.png',goal:1},
+ {id:'dinosaur',title:'Кач, динозавр!',desc:'Прослушать трек «Кач, динозавр!» до конца',img:'Пять динозавров удерживают метеор.png',goal:1},
  {id:'week1',title:'1 Неделя',desc:'Завершить 7 тренировок',img:'Бейдж фитнес-прогресса_ 1 неделя.png',goal:7},
  {id:'week2',title:'2 Неделя',desc:'Завершить 14 тренировок',img:'Значок второй недели тренировок.png',goal:14},
  {id:'week3',title:'3 Неделя',desc:'Завершить 21 тренировку',img:'Третья неделя силы.png',goal:21},
