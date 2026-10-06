@@ -1126,3 +1126,52 @@ body.settings-open{overflow:hidden}
   .settings-card{max-height:calc(100vh - 36px)!important}
  }
 }
+
+
+/* v115 — definitive mobile settings overlay */
+.settings-modal{z-index:5000!important}
+@media(max-width:700px){
+ body.settings-open{overflow:hidden!important;touch-action:none}
+ .settings-modal{
+  position:fixed!important;
+  inset:0!important;
+  z-index:5000!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  padding:16px!important;
+  overflow:hidden!important;
+  background:rgba(0,0,0,.82)!important;
+ }
+ .settings-modal.hidden{display:none!important}
+ .settings-card{
+  flex:0 1 auto!important;
+  width:100%!important;
+  max-width:460px!important;
+  max-height:calc(100dvh - 32px)!important;
+  margin:0!important;
+  padding:16px!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  border-radius:20px!important;
+ }
+ .settings-head{position:static!important;margin:0 0 14px!important;padding:0!important;background:transparent!important}
+ .settings-head small{margin-bottom:3px!important;font-size:9px!important}
+ .settings-head h2{font-size:22px!important}
+ .settings-close{width:38px!important;height:38px!important;flex:0 0 38px!important}
+ .settings-section{padding:13px!important;border-radius:15px!important}
+ .settings-gif-section{margin-bottom:10px!important}
+ .settings-section h3{font-size:15px!important}
+ .settings-section p{margin-bottom:12px!important;font-size:12.5px!important;line-height:1.4!important}
+ .settings-toggle-row p{margin-bottom:0!important}
+ .settings-reset{min-height:42px!important;padding:9px 12px!important}
+}
+@supports not (height:100dvh){
+ @media(max-width:700px){
+  .settings-modal{height:100vh!important;min-height:100vh!important}
+  .settings-card{max-height:calc(100vh - 32px)!important}
+ }
+}
