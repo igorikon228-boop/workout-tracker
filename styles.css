@@ -1206,3 +1206,12 @@ body.settings-open{overflow:hidden}
 .kachigor-gym .tamagotchi-pet{bottom:55px}
 @media(max-width:700px){.kachigor-gym{height:205px;margin-top:16px}.kachigor-gym:before{bottom:54px}.gym-wall:before{bottom:54px}.gym-rack{left:9%;bottom:54px;transform:scale(.82);transform-origin:left bottom}.gym-dumbbells{right:9%;bottom:61px;transform:scale(.85);transform-origin:right bottom}.kachigor-gym .tamagotchi-pet{bottom:48px}}
 @media(max-width:360px){.kachigor-gym{height:190px}.gym-rack{opacity:.75}.gym-dumbbells{right:5%}}
+
+
+/* v118 — compact brand rhythm + sturdier interactive tamagotchi */
+.hero.app-brand-header{margin-bottom:14px!important;padding-top:4px!important;padding-bottom:4px!important}
+@media(max-width:700px){.hero.app-brand-header{margin-bottom:12px!important;padding-top:2px!important;padding-bottom:2px!important}}
+.tamagotchi-pet{padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tamagotchi-pet:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:14px}
+.tamagotchi-pet:active{filter:brightness(1.12)}
+.tamagotchi-sprite{display:block;pointer-events:none}
