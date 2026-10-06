@@ -1026,3 +1026,17 @@ body.settings-open{overflow:hidden}
 .settings-reset{width:100%;min-height:46px;padding:11px 14px;border:1px solid rgba(255,110,110,.38);border-radius:13px;background:rgba(160,38,38,.12);color:#efb0b0;font:inherit;font-weight:800;cursor:pointer}
 .settings-reset:hover{background:rgba(160,38,38,.2)}
 @media(max-width:520px){.settings-modal{align-items:end;padding:10px}.settings-card{padding:18px 16px;border-radius:22px 22px 16px 16px}.settings-head{margin-bottom:16px}}
+
+
+/* v112 — optional GIF player visuals, off by default */
+.settings-gif-section{margin-bottom:12px}
+.settings-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.settings-toggle-row>div{min-width:0}
+.settings-toggle-row h3{margin:0 0 5px}
+.settings-toggle-row p{margin:0!important}
+.settings-switch{position:relative;flex:0 0 52px;width:52px;height:30px;padding:0;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.07);cursor:pointer;transition:background .18s,border-color .18s}
+.settings-switch span{position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:var(--muted);transition:transform .18s,background .18s}
+.settings-switch[aria-checked="true"]{border-color:rgba(var(--accent-rgb),.55);background:rgba(var(--accent-rgb),.18)}
+.settings-switch[aria-checked="true"] span{transform:translateX(22px);background:var(--green)}
+.settings-switch:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media(max-width:520px){.settings-toggle-row{gap:12px}.settings-switch{flex-basis:50px;width:50px}}
